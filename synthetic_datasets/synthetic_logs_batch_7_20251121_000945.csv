@@ -1,0 +1,11 @@
+timestamp,source_ip,http_method,requested_url,query_params,is_malicious
+2023-03-24T00:01:05Z,192.168.1.100,GET,/api/v1/product/view,product_id=12345,false
+2023-03-24T00:01:06Z,192.168.1.100,GET,/api/v1/product/view,product_id=67890,false
+2023-03-24T00:01:07Z,192.168.1.100,GET,/api/v1/product/view,product_id=11111,false
+2023-03-24T00:01:08Z,192.168.1.100,GET,/api/v1/product/view,product_id=22222,false
+2023-03-24T00:01:09Z,192.168.1.100,GET,/api/v1/product/view,product_id=33333,false
+2023-03-24T00:01:10Z,192.168.1.100,GET,/api/v1/product/view,product_id=OR%201%3D1%20--,true
+2023-03-24T00:01:11Z,192.168.1.100,GET,/api/v1/product/view,product_id=UNION%20SELECT%20table_name,true
+2023-03-24T00:01:12Z,192.168.1.100,GET,/api/v1/product/view,product_id=--%20OR%201%3D1,true
+2023-03-24T00:01:13Z,192.168.1.100,GET,/api/v1/product/view,product_id=SELECT%20*%20FROM%20products,true
+2023-03-24T00:01:14Z,192.168.1.100,GET,/api/v1/product/view,product_id=1%20AND%201%3D1,true

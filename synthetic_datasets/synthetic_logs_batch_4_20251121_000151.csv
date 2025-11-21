@@ -1,0 +1,11 @@
+timestamp,source_ip,http_method,requested_url,query_params,is_malicious
+2023-07-11T10:00:00Z,192.168.1.100,GET,/api/v1/product/view,product_id=12345,false
+2023-07-11T10:01:00Z,192.168.1.100,GET,/api/v1/product/view,product_id=12345,false
+2023-07-11T10:02:00Z,192.168.1.100,GET,/api/v1/product/view,product_id=12345,false
+2023-07-11T10:03:00Z,192.168.1.100,GET,/api/v1/product/view,product_id=12345,false
+2023-07-11T10:04:00Z,192.168.1.100,GET,/api/v1/product/view,product_id=12345,false
+2023-07-11T10:05:00Z,192.168.1.100,GET,/api/v1/product/view?product_id=12345+OR+1=1--,product_id=12345+OR+1=1--,true
+2023-07-11T10:06:00Z,192.168.1.100,GET,/api/v1/product/view?product_id=UNION+SELECT+table_name+FROM+information_schema.tables--,product_id=UNION+SELECT+table_name+FROM+information_schema.tables--,true
+2023-07-11T10:07:00Z,192.168.1.100,GET,/api/v1/product/view?product_id=12345+AND+1=0--,product_id=12345+AND+1=0--,true
+2023-07-11T10:08:00Z,192.168.1.100,GET,/api/v1/product/view?product_id=SELECT+*+FROM+products--,product_id=SELECT+*+FROM+products--,true
+2023-07-11T10:09:00Z,192.168.1.100,GET,/api/v1/product/view?product_id=12345+OR+2=2--,product_id=12345+OR+2=2--,true

@@ -1,0 +1,7 @@
+timesamp,source_ip,http_method,requested_url,query_params,is_malicious
+2021-07-16T13:57:49Z,1.2.3.4,GET,/api/v1/product/list,"&sortby=id,name,price",
+2021-07-16T13:57:49Z,1.2.3.4,GET,"/api/v1/product/list?sortby=id,name,price",,True
+2021-07-16T13:57:49Z,1.2.3.4,GET,"/api/v1/product/list?sortby=id,name,price",,True
+2021-07-16T13:57:49Z,1.2.3.4,GET,"/api/v1/product/list?sortby=id,name,price",,True
+2021-07-16T13:57:49Z,1.2.3.4,GET,"/api/v1/product/list?sortby=id,name,price&is_malicious=true",,True
+2021-07-16T13:57:49Z,1.2.3.4,GET,"/api/v1/product/list?sortby=id,name,price&is_malicious=true",,True

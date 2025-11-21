@@ -1,0 +1,11 @@
+timestamp,source_ip,http_method,requested_url,query_params,is_malicious
+2023-03-01T00:02:30Z,192.168.1.100,GET,/api/v1/product/view,product_id=12345,false
+2023-03-01T00:02:31Z,192.168.1.100,GET,/api/v1/product/view,product_id=12345&category_name=fashion,false
+2023-03-01T00:02:32Z,192.168.1.100,GET,/api/v1/product/view,product_id=67890&brand_name=adidas,false
+2023-03-01T00:02:33Z,192.168.1.100,GET,/api/v1/product/view,product_id=11111&category_name=sports,false
+2023-03-01T00:02:34Z,192.168.1.100,GET,/api/v1/product/view,product_id=22222&brand_name=nike,false
+2023-03-01T00:02:35Z,192.168.1.100,GET,/api/v1/product/view,product_id=99999 OR 1=1 --&category_name=fashion,true
+2023-03-01T00:02:36Z,192.168.1.100,GET,/api/v1/product/view,product_id=88888 UNION SELECT table_name FROM information_schema.tables --&brand_name=sports,true
+2023-03-01T00:02:37Z,192.168.1.100,GET,/api/v1/product/view,product_id=77777 OR 1=2 AND (SELECT COUNT(*) FROM information_schema.tables) --&category_name=sports,true
+2023-03-01T00:02:38Z,192.168.1.100,GET,/api/v1/product/view,product_id=66666 UNION SELECT column_name FROM information_schema.columns WHERE table_name='products' --&brand_name=fashion,true
+2023-03-01T00:02:39Z,192.168.1.100,GET,/api/v1/product/view,product_id=55555 OR 1=2 AND (SELECT COUNT(*) FROM information_schema.columns) --&category_name=sports,true

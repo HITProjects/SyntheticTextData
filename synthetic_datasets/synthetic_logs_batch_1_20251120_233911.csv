@@ -1,0 +1,8 @@
+timesamp,source_ip,http_method,requested_url,query_params,is_malicious
+2021-09-23T10:46:58Z,192.168.3.11,GET,/admin/user/login,username=admin&password=secret,True
+2021-09-23T10:46:58Z,172.16.58.3,GET,/admin/user/login,username=joe&password=secret,True
+2021-09-23T10:46:58Z,172.16.17.32,GET,/admin/user/login,username=jane&password=secret,False
+2021-09-23T10:46:58Z,172.16.58.3,GET,/admin/user/login,username=joe&password=secret,False
+2021-09-23T10:46:58Z,172.16.31.10,GET,/admin/user/login,username=jane&password=secret,False
+2021-09-23T10:46:58Z,192.168.127.12,GET,/admin/user/login,username=jane&password=secret,False
+2021-09-23T10:46:58Z,172.16.31.10,GET,/admin/user/login,username=joe&password=secret,False

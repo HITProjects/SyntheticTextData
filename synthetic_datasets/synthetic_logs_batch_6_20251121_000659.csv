@@ -1,0 +1,11 @@
+timestamp,source_ip,http_method,requested_url,query_params,is_malicious
+2023-02-17T00:00:00Z,192.0.2.1,GET,/api/v1/product/view,product_id=12345,false
+2023-02-17T00:05:00Z,192.0.2.2,GET,/api/v1/product/view,product_id=12345,false
+2023-02-17T00:10:00Z,192.0.2.3,GET,/api/v1/product/view,product_id=12345,false
+2023-02-17T00:15:00Z,192.0.2.4,GET,/api/v1/product/view,product_id=12345,false
+2023-02-17T00:20:00Z,192.0.2.5,GET,/api/v1/product/view,product_id=12345,false
+2023-02-17T00:25:00Z,192.0.2.6,GET,/api/v1/product/view,product_id=12345 OR 1=1 --,true
+2023-02-17T00:30:00Z,192.0.2.7,GET,/api/v1/product/view,product_id=12345 UNION SELECT table_name FROM information_schema.tables --,true
+2023-02-17T00:35:00Z,192.0.2.8,GET,/api/v1/product/view,product_id=12345 AND 1=1 --,true
+2023-02-17T00:40:00Z,192.0.2.9,GET,/api/v1/product/view,product_id=12345 UNION ALL SELECT table_name FROM information_schema.tables --,true
+2023-02-17T00:45:00Z,192.0.2.10,GET,/api/v1/product/view,product_id=12345 OR 1=2 --,true

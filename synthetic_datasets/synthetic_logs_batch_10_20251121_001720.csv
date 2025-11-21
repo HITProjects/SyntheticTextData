@@ -1,0 +1,11 @@
+timestamp,source_ip,http_method,requested_url,query_params,is_malicious
+2023-02-28T14:30:00Z,192.0.2.1,GET,/api/v1/product/view,product_id=12345,false
+2023-02-28T14:30:01Z,198.51.100.10,GET,/api/v1/product/view,product_id=67890,true
+2023-02-28T14:30:02Z,203.0.113.100,GET,/api/v1/product/view,product_id=12345 OR 1=1 --,true
+2023-02-28T14:30:03Z,192.0.2.1,GET,/api/v1/product/view,product_id=67890,false
+2023-02-28T14:30:04Z,198.51.100.10,GET,/api/v1/product/view,product_id=12345 UNION SELECT table_name FROM information_schema.tables,true
+2023-02-28T14:30:05Z,203.0.113.100,GET,/api/v1/product/view,product_id=67890,false
+2023-02-28T14:30:06Z,192.0.2.1,GET,/api/v1/product/view,product_id=12345 OR 1=2 --,true
+2023-02-28T14:30:07Z,198.51.100.10,GET,/api/v1/product/view,product_id=67890 UNION SELECT table_name FROM information_schema.tables,true
+2023-02-28T14:30:08Z,203.0.113.100,GET,/api/v1/product/view,product_id=12345,false
+2023-02-28T14:30:09Z,192.0.2.1,GET,/api/v1/product/view,product_id=67890 UNION SELECT table_name FROM information_schema.tables WHERE 1=0,true
