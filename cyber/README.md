@@ -1,1 +1,1 @@
-# FinSyn: Financial Fraud Synthetic Data 
+FinSyn Project 
