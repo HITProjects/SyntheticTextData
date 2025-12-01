@@ -1,7 +1,0 @@
-timesamp,source_ip,http_method,requested_url,query_params,is_malicious
-2021-07-15T09:04:38+02:00,1.2.3.4,GET,/api/v1/product/view,product_id=123&page=2,True
-2021-07-15T09:04:38+02:00,1.2.3.5,GET,/api/v1/product/view,product_id=124&page=2,False
-2021-07-15T09:04:38+02:00,1.2.3.6,GET,/api/v1/product/view,product_id=567&page=2,False
-2021-07-15T09:04:38+02:00,1.2.3.7,GET,/api/v1/product/view?page=2&filter[name]=John&filter[age]=45,,False
-2021-07-15T09:04:38+02:00,1.2.3.8,GET,/api/v1/product/view?page=2&filter[name]=John,,False
-2021-07-15T09:04:38+02:00,1.2.3.9,GET,/api/v1/product/view?page=2&filter[name]=John,,False
