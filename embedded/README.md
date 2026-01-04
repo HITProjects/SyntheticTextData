@@ -1,5 +1,6 @@
 # Automated Datasheet Extraction using Synthetic Data & GenAI 📄⚡
-# A data-centric pipeline for parsing electronic component specifications from PDFs to structured JSON.
+## A data-centric pipeline for parsing electronic component specifications from PDFs to structured JSON.
+### Niv Saban
 
 ## 🚀 Executive Summary
 This project tackles one of the most persistent challenges in the electronics industry: transforming unstructured PDF datasheets into accessible, accurate digital intelligence.
