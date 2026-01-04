@@ -9,16 +9,21 @@
 ---
 
 ## 🚀 Overview
-Collecting labeled data for fine-grained sentiment analysis is expensive and time-consuming. This project automates the creation of a **nuanced educational dataset** containing 6,000+ student course reviews. 
+Collecting labeled data for fine-grained sentiment analysis is expensive and time-consuming. This project automates the creation of a **nuanced educational dataset** containing 6,000+ student course reviews.
 
 Unlike simple sentiment analysis (positive/negative), this engine generates **aspect-level labels** (e.g., specific sentiment towards *Exam Fairness* vs. *Lecturer Quality* in the same review) and mimics diverse writing styles using a **two-pass generation approach**.
 
+### ⚡ Quick Look
+**Why is this better than standard data?**
+* **Standard Sentiment:** "The course was bad." ❌ *(Too simple)*
+* **Synthetic ABSA (Ours):** "The **lecturer** was great `[Positive]`, but the **exams** were unfair `[Negative]`." ✅ *(Nuanced & Label-Rich)*
+
 ### Key Features
-* **🤖 Local LLM Inference:** Built on **Llama 3** using **Ollama** for privacy-preserving, cost-free generation.
-* **🔄 Two-Pass Refinement:** A sophisticated pipeline that generates a base draft and then refines it to strictly match label constraints and style guidelines.
-* **🎭 Style Transfer:** Simulates 6 distinct personas (e.g., *"Casual Texting"*, *"Analytic"*, *"Rant/Rave"*) to ensure model robustness against real-world noise.
-* **noise Injection:** Automatically introduces typos, slang, and structural noise to prevent "synthetic artifacts" and overfitting.
-* **⚖️ Balanced Sampling:** Implements weighted sampling algorithms to ensure class balance across grades (A-F) and sentiment polarities.
+*  **Zero-Cost Inference:** Runs 100% locally on **Llama 3** via **Ollama** (No API costs).
+*  **Two-Pass Refinement:** A sophisticated pipeline that generates a base draft and then refines it to strictly match label constraints and style guidelines.
+*  **Dynamic Personas:** Simulates 6 distinct writing styles (e.g., *"Casual Texting"*, *"Analytic"*, *"Rant"*) to ensure model robustness against real-world noise.
+*  **Noise Injection:** Automatically introduces typos, slang, and structural noise to prevent "synthetic artifacts" and overfitting.
+*  **Balanced Sampling:** Implements weighted sampling algorithms to ensure class balance across grades (A-F) and sentiment polarities.
 
 ---
 
@@ -46,8 +51,9 @@ The output is a `.jsonl` file ideal for training custom NLP models.
   },
   "review_text": "so is this course worth it? workload's okay i guess but the exam made no sense..."
 }
----
+
 ```
+---
 ## Supported Aspects
 The dataset covers 10 distinct educational aspects, enabling granular sentiment analysis:
 `difficulty`, `clarity`, `workload`, `lecturer_quality`, `exam_fairness`, `relevance`, `interest`, `support`, `materials`, `overall_experience`.
