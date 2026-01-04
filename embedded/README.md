@@ -51,12 +51,10 @@ Built on a modular Object-Oriented Design (OOD). Adding a new electronic compone
   
 ---
 
-# 🎯 Motivation: Bridging the Data Gap in Electronics
-In the modern electronics industry, datasheets serve as the authoritative source of truth for design, procurement, and manufacturing. However, extracting critical intelligence from these documents remains a manual, labor-intensive, and error-prone process, creating significant bottlenecks in supply chain and development workflows.
+## 📉 The Bottleneck: Why Models Fail in Electronics
 
-The core challenge is technological: standard OCR tools and generic NLP models fail to interpret the complex structure of engineering tables, variable units of measurement, and precise numerical values found in technical documents. Furthermore, the most critical barrier is the complete absence of a high-quality, labeled Dataset specific to the electronics domain, which makes it impossible to train advanced Document Understanding models (such as LayoutLM) effectively.
-
-Our solution addresses this gap through a Data-Centric AI approach. Instead of relying on expensive and limited manual labeling, we developed a Synthetic Data Factory. This system procedurally generates realistic datasheets complete with visual noise, diverse layouts, and physical consistency constraints. Crucially, every generated document is automatically paired with Perfect Ground Truth in JSON format. This enables, for the first time, the large-scale training of Deep Learning models capable of automating component comparison, BOM optimization, and intelligent supply chain management.
+While Document Understanding models (like LayoutLM and Donut) have revolutionized generic document processing, they remain ineffective in the electronics domain due to a critical Data Scarcity. There are simply no public, large-scale, annotated datasets for component datasheets.
+The resulting "Cold Start" problem forces companies to rely on fragile RegEx scripts or manual entry. This project flips the paradigm: instead of tweaking model architectures to handle low-resource tasks, we solve the root cause by engineering an infinite stream of high-quality, domain-specific training data, effectively unlocking the potential of State-of-the-Art Transformers for hardware engineering.
 
 ---
 
@@ -82,3 +80,39 @@ Hierarchical Context: Clearly distinguishes between parent categories (e.g., Pow
 Granular Parsing: Deconstructs values into Min/Typ/Max, Units, and Test Conditions.
 
 Physics-Aware Training: This rich semantic structure enables Deep Learning models to go beyond simple text recognition, allowing them to "understand" the underlying physical correlations within the data without requiring manual annotation.
+
+## 🔮 Roadmap & Future Scope
+
+This project represents the **Data-Centric** foundation of a larger Document Understanding pipeline. While the current release focuses on the generation of high-fidelity synthetic data, the immediate roadmap involves leveraging this asset for downstream tasks:
+
+1.  **Model Training (LayoutLMv3 / Donut):**
+    Fine-tuning multimodal Transformer models on the generated dataset. Since the data includes perfect bounding boxes and semantic labels, we can train models to perform **Information Extraction (IE)** and **Question Answering (QA)** on technical documents with zero manual annotation.
+
+2.  **Sim2Real Adaptation:**
+    Validating the model's performance on a "Gold Set" of real-world scanned datasheets. We plan to employ domain adaptation techniques to bridge the gap between our synthetic styles and the noisy, real-world scans found in legacy archives.
+
+3.  **Benchmarking & Physics Validation:**
+    Comparing the *Physics-Aware* approach against standard random-data baselines. We aim to quantify how maintaining engineering consistency in the training data improves the model's ability to hallucinate less and detect numerical anomalies in real inference scenarios.
+
+## 🛠️ Getting Started
+
+### Prerequisites
+* **Python 3.8+**
+* **Ollama** (Required for local LLM inference).
+    * *Installation:* [Download Ollama](https://ollama.com/) and pull the base model:
+        ```bash
+        ollama pull qwen2.5:1.5b
+        ```
+* **wkhtmltopdf** (Required for rendering visual artifacts).
+
+### Installation
+
+```bash
+# 1. Clone the repository
+git clone [https://github.com/HITProjects/SyntheticTextData.git](https://github.com/HITProjects/SyntheticTextData.git)
+
+# 2. Navigate to the project directory
+cd SyntheticTextData/embedded
+
+# 3. Install Python dependencies
+pip install -r requirements.txt
