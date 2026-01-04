@@ -1,173 +1,116 @@
-# ABSA-Synthetic-Student-Reviews
+# 🎓 Synthetic ABSA: Student Reviews Dataset Generator
 
-## What is this project?
-A project for generating a **synthetic dataset of student course reviews** (Computer Science courses), where each review is labeled with:
-- **Aspects** (e.g., difficulty, clarity, exam_fairness, etc.)
-- **Sentiment per aspect** (positive / neutral / negative)
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
+![GenAI](https://img.shields.io/badge/GenAI-Llama3-purple)
+![NLP](https://img.shields.io/badge/Task-Aspect--Based_Sentiment_Analysis-orange)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-The dataset is saved in **JSONL** format (one JSON object per line) and is designed for tasks such as **Aspect-Based Sentiment Analysis (ABSA)**.
-
----
-
-## Motivation | Why is this needed?
-Most available student-review datasets provide, at best, an **overall sentiment** (good/bad/neutral), but do not include aspect-level labels.
-
-Aspect-level labeling makes it possible to understand *what exactly* the student is referring to:
-- Is the issue the workload?
-- Lack of support (TA/office hours)?
-- Lecturer quality?
-- Exam fairness?
-
-In addition, synthetic data allows control over the amount of data and the variety of writing styles.
+> **A robust data generation pipeline leveraging local LLMs (Llama 3 via Ollama) to create high-quality, labeled synthetic datasets for Aspect-Based Sentiment Analysis (ABSA).**
 
 ---
 
-## Problem Definition
-Build a pipeline that generates JSONL examples where each line includes:
-- Course / lecturer metadata
-- Grade
-- Writing style
-- An aspects →ive-dictionary (aspect → sentiment)
-- A natural-sounding review text that matches the labels
+## 🚀 Overview
+Collecting labeled data for fine-grained sentiment analysis is expensive and time-consuming. This project automates the creation of a **nuanced educational dataset** containing 6,000+ student course reviews. 
+
+Unlike simple sentiment analysis (positive/negative), this engine generates **aspect-level labels** (e.g., specific sentiment towards *Exam Fairness* vs. *Lecturer Quality* in the same review) and mimics diverse writing styles using a **two-pass generation approach**.
+
+### Key Features
+* **🤖 Local LLM Inference:** Built on **Llama 3** using **Ollama** for privacy-preserving, cost-free generation.
+* **🔄 Two-Pass Refinement:** A sophisticated pipeline that generates a base draft and then refines it to strictly match label constraints and style guidelines.
+* **🎭 Style Transfer:** Simulates 6 distinct personas (e.g., *"Casual Texting"*, *"Analytic"*, *"Rant/Rave"*) to ensure model robustness against real-world noise.
+* **noise Injection:** Automatically introduces typos, slang, and structural noise to prevent "synthetic artifacts" and overfitting.
+* **⚖️ Balanced Sampling:** Implements weighted sampling algorithms to ensure class balance across grades (A-F) and sentiment polarities.
 
 ---
 
-## Dataset Format
-Each line is a JSON object. Example:
+## 🛠️ Tech Stack
+* **Core:** Python
+* **LLM Backend:** Ollama (Llama 3), extensible to OpenAI GPT-4o.
+* **Data Handling:** JSONL format for streaming efficiency.
+* **Architecture:** Modular design with `RobustDataGenerator` class handling sampling, prompting, and post-processing.
 
+---
+
+## 📊 Dataset Structure
+The output is a `.jsonl` file ideal for training custom NLP models.
+
+**Sample Record:**
 ```json
 {
   "course_name": "Computer Networks",
   "lecturer": "Prof. Klein",
   "grade": "D (Barely passed)",
-  "style": "Confused Student (Unsure about things, asks rhetorical questions)",
-  "aspects": { "workload": "neutral" },
-  "review_text": "so s this course worth it? workload's okay i guess"
+  "style": "Confused Student",
+  "aspects": {
+    "workload": "neutral",
+    "exam_fairness": "negative"
+  },
+  "review_text": "so is this course worth it? workload's okay i guess but the exam made no sense..."
 }
+---
+```
+## Supported Aspects
+The dataset covers 10 distinct educational aspects, enabling granular sentiment analysis:
+`difficulty`, `clarity`, `workload`, `lecturer_quality`, `exam_fairness`, `relevance`, `interest`, `support`, `materials`, `overall_experience`.
+
+---
+
+## ⚙️ How It Works (The Pipeline)
+
+```mermaid
+graph TD
+    A[Parameter Sampling] -->|Grade, Style, Aspects| B(Prompt Engineering)
+    B --> C{Llama 3 Inference}
+    C -->|Phase 1| D[Raw Text Generation]
+    D -->|Phase 2| E[Refinement & Consistency Check]
+    E --> F[Post-Processing & Noise Injection]
+    F --> G[(Final JSONL Output)]
 ```
 ---
-## Fields
-- `course_name` (string)
-- `lecturer` (string)
-- `grade` (categorical string): A/B/C/D/F
-- `style` (categorical string): one of the predefined styles
-- `aspects` (dict): aspect_name → sentiment
-- `review_text` (string)
+### Pipeline Steps:
+1. **Parameter Sampling:** Randomly selects course metadata, student persona, and target aspects-sentiment pairs (logic-constrained).
+2. **Prompt Engineering:** Constructs a dynamic prompt with `FORBIDDEN_PHRASES` to avoid robotic patterns.
+3. **Generation & Refinement:**
+    * *Phase 1:* Generate raw text based on constraints.
+    * *Phase 2:* Refine text to ensure alignment with specific aspect labels.
+4. **Post-Processing:** Cleans artifacts, injects "human" noise (abbreviations, lowercase, typos), and validates length.
 
 ---
 
-## Model
-The text is generated using a locally running LLM via **Ollama**:
+## 💻 Getting Started
 
-- **Model:** `llama3`
-- **Provider:** `ollama`
-- **Base URL:** `http://localhost:11434`
+### Prerequisites
+* Python 3.x
+* [Ollama](https://ollama.com/) installed and running locally.
 
-> The code also supports OpenAI (`gpt-4o-mini`), but the project currently uses Ollama.
+### Installation
+```bash
+git clone [https://github.com/HITProjects/SyntheticTextData.git](https://github.com/HITProjects/SyntheticTextData.git)
+cd SyntheticTextData/edu
+pip install -r requirements.txt
+```
+---
+### Usage
+1. **Start the LLM Server:**
+   Make sure Ollama is serving the Llama 3 model:
+   ```bash
+   ollama run llama3
+   ```
+   ---
+
+2. **Run the Generator:**
+   You can run the provided notebook or script to generate data:
+   ```bash
+   # Example command
+   python generate_dataset.py --count 100 --output my_data.jsonl
+   ```
+   ---
+   ## 📈 Results
+* **Total Samples:** 6,000 labeled reviews.
+* **Format:** JSONL (Ready for HuggingFace `datasets` library).
+* **Diversity:** High lexical diversity due to multi-style prompting and noise injection.
 
 ---
 
-## Generation Process
-The generator (`RobustDataGenerator`) produces each example in several steps:
-
-### 1) Sampling
-For each example, the generator samples:
-- A course from a predefined list (with a short description)
-- A lecturer from a predefined list
-- Student year: Freshman / Sophomore / Junior / Senior
-- Course state: Currently taking / Completed recently / Took it a while ago  
-  *(sometimes “Retaking” depending on the generator version)*
-- Grade: A/B/C/D/F
-- Number of aspects: randomly between **1 and 3**
-- Sentiment for each selected aspect: **positive / neutral / negative**, with basic logical constraints  
-  *(e.g., low grades limit some aspects from being positive)*
-
-### 2) Prompt Construction
-The prompt includes:
-- Writing style + length constraint based on the selected style
-- A list of forbidden phrases (`FORBIDDEN_PHRASES`) to avoid “robotic/academic” wording
-- The labels (`aspects → sentiment`)
-- Aspect-specific keyword guidance (`ASPECT_KEYWORDS`) to encourage alignment between the text and the labels
-- Context: course, lecturer, student year, course state, grade
-
-The model is instructed to output **ONLY** the review text (no preamble/meta).
-
-### 3) Two-pass generation (Generation + Refinement)
-The system performs:
-- Initial generation (`_build_gen_prompt`)
-- A refinement / rewrite step (`_build_refiner_prompt`) to better match the style and labels
-
-### 4) Cleaning + Human-like noise
-Post-processing steps include:
-- Removing preambles, quotes, notes, unwanted endings, etc.
-- Fixing truncated starts (e.g., `'s` → `It's`)
-- Adding informal writing features for relevant styles (lowercase, abbreviations, `"2"` instead of `"to"`, etc.)
-- Occasionally adding small noise (dropping a character / removing a space after punctuation)
-- Enforcing strict length constraints per style
-
----
-
-## Styles
-The generator uses **6 predefined writing styles**:
-- **Casual** (Texting style: lowercase, no punctuation, slang like `tbh`, `idk`, `tho`, fragments)
-- **Simple & Direct** (Use only common words. No academic jargon. Like talking to a friend)
-- **Rant/Rave** (Emotional, very subjective, lots of punctuation `!!!` or `...`)
-- **Short** (Max 10–15 words. Fragments allowed)
-- **Analytic but Simple** (Explains “why” but uses simple language)
-- **Confused Student** (Unsure about things, asks rhetorical questions)
-
----
-
-## Aspects
-The system labels from a fixed list of **10 aspects**:
-- `difficulty`, `clarity`, `workload`, `lecturer_quality`
-- `exam_fairness`, `relevance`, `interest`, `support`
-- `materials`, `overall_experience`
-
-Each aspect receives a sentiment from: `positive` / `neutral` / `negative`.
-
----
-
-## Current Results
-- **Dataset file:** `final_student_reviews.jsonl`
-- **Number of examples:** 6000 (final for now)
-- **Aspects per review:** 1–3 (as defined in the code)
-
-
----
-
-## Balancing Update (Improved Version)
-In an additional generator version, grade sampling was adjusted to balance the dataset:
-- Generate only **A/B/C** using weighted sampling
-- Prevent generating **D/F** (weights = 0) to fill missing higher/mid grades
-
-Goal: achieve a more balanced grade distribution in the final dataset.
-
----
-
-## How to Run
-
-### Requirements
-- **Ollama** running locally at: `http://localhost:11434`
-- The model installed in Ollama: `llama3`
-- Python + libraries: `requests`  
-  *(and optionally `openai` if using the OpenAI provider)*
-
-### Generating and saving JSONL
-The code supports batch generation and appending to a JSONL file:
-- **Output file:** `final_student_reviews.jsonl`
-- **Target size:** 6000
-- **Batch size:** 50
-
-*(The run is performed from the notebook/script that contains the generator and `generate_dataset_in_batches`.)*
-
----
-
-## Repository Contents
-- `final_student_reviews.jsonl` — final dataset (6000 examples)
-- `dataset_generator.ipynb` / `dataset_generator_balanced.ipynb` — notebooks containing the generator and dataset generation runs
-
----
-
-## Author
-Guy Yogev
+## 👤 Author
+**Guy Yogev**
