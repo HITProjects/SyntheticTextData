@@ -3,7 +3,6 @@
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
 ![GenAI](https://img.shields.io/badge/GenAI-Llama3-purple)
 ![NLP](https://img.shields.io/badge/Task-Aspect--Based_Sentiment_Analysis-orange)
-![License](https://img.shields.io/badge/License-MIT-green)
 
 > **A robust data generation pipeline leveraging local LLMs (Llama 3 via Ollama) to create high-quality, labeled synthetic datasets for Aspect-Based Sentiment Analysis (ABSA).**
 
