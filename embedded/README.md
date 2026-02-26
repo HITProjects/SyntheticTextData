@@ -1,5 +1,5 @@
 # Automated Datasheet Extraction using Synthetic Data & GenAI 📄⚡
-## A data-centric pipeline for parsing electronic component specifications from PDFs to structured JSON.
+## A data-centric pipeline for parsing electronic component specifications from HTML to structured JSON.
 ### Niv Saban
 
 ## 🚀 Executive Summary
