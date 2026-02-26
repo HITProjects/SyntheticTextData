@@ -35,8 +35,8 @@ The resulting "Cold Start" problem forces companies to rely on fragile RegEx scr
 
 # ✨ Key Features
 
-⚛️ **Physics-Aware Data Generation**
-Physics-Aware Data Generation: Standard random generators fail in engineering. This engine implements an electrical constraints solver, ensuring that generated parameters obey physical laws (e.g., correlating $R_{DS(on)}$ with breakdown voltage). The data is engineeringly valid, not just syntactically correct.
+⚛️ **Physics-Aware Data Generation**: Standard random generators fail in engineering. This engine implements an electrical constraints solver, ensuring that generated parameters obey physical laws. The data is engineeringly valid, not just syntactically correct.
+    From the field: If the system generates a TO-220 package, the Physics Engine hard-codes the Thermal Resistance ($R_{\theta JC}$) to a realistic 0.5-2.0 °C/W.      The LLM is then mathematically locked to these facts, preventing it from hallucinating a physically impossible 50 °C/W for a high-power package.
 
 🤖 **GenAI-Powered Text Enrichment**
 Integrates Local LLMs (via Ollama) to generate context-aware descriptive text, footnotes, and marketing disclaimers. This simulates the narrative variance found in real datasheets (e.g., TI vs. Vishay vs. ON Semi styles).
@@ -97,6 +97,9 @@ Before feeding the generated data into the network, the raw HTML and JSONL under
 ### 3. 🧠 Model Training: Joint Entity & Relation Extraction
 
 The extraction engine is powered by a fine-tuned **DeBERTa** model, selected for its Disentangled Attention mechanism which excels at mapping long-range dependencies in dense technical texts. Instead of relying on a cascaded approach (which is prone to error propagation), the model utilizes a **Joint Extraction architecture**. A unified network simultaneously predicts token-level BIO tags (Named Entity Recognition) and classifies the semantic relations (e.g., `has_value`, `has_unit`) between them. By optimizing a combined loss function, the model inherently learns the structural and physical context of the datasheet.
+
+**Why DeBERTa-v3 for HTML Datasheets?**
+In technical HTML documents, an engineering parameter (e.g., $V_{DS}$) and its value (e.g., $50V$) might be separated by dozens of structural DOM tags (<td>, <tr>), whitespaces, and CSS classes. DeBERTa’s Disentangled Attention mechanism computes the content and relative position of tokens separately. This allows the model to deeply understand the long-range syntactic relationships between entities across complex table structures, far outperforming standard BERT models on dense, noisy HTML token streams.
 
 ---
 
