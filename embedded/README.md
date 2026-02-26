@@ -56,6 +56,18 @@ Built on a modular Object-Oriented Design (OOD). Adding a new electronic compone
 
 ## 🧩 System Architecture
 
+The generation pipeline ensures strict synchronization between the visual output and the Ground Truth. For each generated datasheet, a central coordinator executes the following sequence:
+
+**Dynamic Configuration (RenderingConfig):** Applies randomized structural rules across the document, such as hiding specific columns, transposing tables, or shifting long test conditions to footnotes.
+
+**Adversarial Partitioning & NLG:** Randomly extracts certain parameters from tables and injects them into natural language paragraphs ("Needle in a Haystack"). This forces the model to learn extraction from both structured tables and unstructured text.
+
+**Synchronized Dual Rendering:** The configured data is simultaneously processed by two engines:
+
+   DatasheetHtmlRenderer: Generates the visual HTML document, incorporating dynamic CSS themes, generated engineering charts, and hidden structural BIO tags.
+
+   DatasheetJSONRenderer: Produces the 100% accurate training JSON. It outputs both entity-centric labels for NER and relation-centric triples (Subject-Predicate-    Object) to train the DeBERTa model on complex semantic relationships.
+
 <img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/07218bf7-5035-418c-ad93-182636bb022f" />
 
 ---
@@ -68,21 +80,19 @@ Visual heterogeneity in action. The system creates diverse HTML/PDF representati
 
 ---
 
-## 📊 Outputs: From Unstructured PDF to Hierarchical JSON
+## 📊 Outputs: From Unstructured HTML to Hierarchical JSON
 
 
 <img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/786c769f-79da-4de6-bf9f-9080db82b15a" />
 
+Unlike standard OCR tools that produce flat text, the pipeline generates a perfectly matched JSONL Ground Truth. By atomizing parameters into granular attributes (Min/Typ/Max, Units, Conditions), it provides the rich hierarchical structure needed for Deep Learning models to understand physical correlations, going far beyond simple text recognition.
 
-For every visually generated datasheet, the pipeline simultaneously produces a perfectly matched Ground Truth JSON with 100% label accuracy.
+### ⚙️ Data Preprocessing & Token Alignment
+Before feeding the generated data into the network, the raw HTML and JSONL undergo a rigorous preprocessing pipeline. The structural HTML is parsed into a continuous token stream while preserving its inherent layout context. The most critical step here is **Sub-word Token Alignment**. Because DeBERTa uses a sub-word tokenizer, a single engineering term might be split into multiple tokens. To maintain perfect label fidelity, the pipeline applies PyTorch's `-100` index masking trick: only the first sub-word receives the original BIO tag, while the rest are masked. This ensures the model learns precise entity boundaries without the loss function penalizing tokenization artifacts.
 
-Unlike standard OCR tools that output flat, unstructured text, this system enforces a strict Engineering Data Structure. As demonstrated in the sample below, the JSON preserves the component's complex taxonomy, atomizing each parameter into its granular attributes:
+### 🧠 Model Training: Joint Entity & Relation Extraction
 
-Hierarchical Context: Clearly distinguishes between parent categories (e.g., Power Rating vs. Dissipation Factor).
-
-Granular Parsing: Deconstructs values into Min/Typ/Max, Units, and Test Conditions.
-
-Physics-Aware Training: This rich semantic structure enables Deep Learning models to go beyond simple text recognition, allowing them to "understand" the underlying physical correlations within the data without requiring manual annotation.
+The extraction engine is powered by a fine-tuned **DeBERTa** model, selected for its Disentangled Attention mechanism which excels at mapping long-range dependencies in dense technical texts. Instead of relying on a cascaded approach (which is prone to error propagation), the model utilizes a **Joint Extraction architecture**. A unified network simultaneously predicts token-level BIO tags (Named Entity Recognition) and classifies the semantic relations (e.g., `has_value`, `has_unit`) between them. By optimizing a combined loss function, the model inherently learns the structural and physical context of the datasheet.
 
 ## 🔮 Roadmap & Future Scope
 
