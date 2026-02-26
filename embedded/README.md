@@ -77,7 +77,7 @@ The generation pipeline ensures strict synchronization between the visual output
 
 <img width="802" height="454" alt="image" src="https://github.com/user-attachments/assets/cd066f2b-d6fa-4389-b04d-291a1f9c9419" />
 
-Visual heterogeneity in action. The system creates diverse HTML/PDF representations for a single component ID, simulating the real-world chaos of unstructured datasheets.
+The rendering engine generates diverse HTML DOM structures for a single component. By randomizing table layouts, hiding columns, transposing sections, and injecting adversarial structural noise, the pipeline simulates the true chaos of real-world datasheets, preventing the DeBERTa model from overfitting to specific templates.
 
 
 ## 📊 Outputs: From Unstructured HTML to Hierarchical JSON
