@@ -30,7 +30,7 @@ Beyond generation, the pipeline meticulously prepares this data for deep learnin
 
 ⚛️ **Physics-Aware Data Generation**: Standard random generators fail in engineering. This engine implements an electrical constraints solver, ensuring that generated parameters obey physical laws. The data is engineeringly valid, not just syntactically correct.
 
-    From the field: If the system generates a TO-220 package, the Physics Engine hard-codes the Thermal Resistance ($R_{\theta JC}$) to a realistic 0.5-2.0 °C/W.      The LLM is then mathematically locked to these facts, preventing it from hallucinating a physically impossible 50 °C/W for a high-power package.
+From the field: If the system generates a TO-220 package, the Physics Engine hard-codes the Thermal Resistance ($R_{\theta JC}$) to a realistic 0.5-2.0 °C/W.      The LLM is then mathematically locked to these facts, preventing it from hallucinating a physically impossible 50 °C/W for a high-power package.
 
 🤖 **GenAI-Powered Text Enrichment**
 Integrates Local LLMs (via Ollama) to generate context-aware descriptive text, footnotes, and marketing disclaimers. This simulates the narrative variance found in real datasheets (e.g., TI vs. Vishay vs. ON Semi styles).
@@ -114,7 +114,8 @@ To prevent class imbalance—a notorious issue in relation extraction—**relati
 
 | Metric | Count / Details | Why it matters |
 | :--- | :--- | :--- |
-| **Total Generated Documents** | 11,862 | Demonstrates pipeline scalability across diverse templates. |
+| **Total Generated Documents** | `8,000` | Demonstrates pipeline scalability across diverse templates. |
+| **Total Training Samples** | `11,862` | The actual number of sliding windows fed to DeBERTa (max 512 tokens each). |
 | **Avg. Tokens per Document** | 379 | Exceeds standard 512-token limit, necessitating the sliding window mechanism. |
 | **Total Annotated Entities** | 518,824 | Covers 7 semantic categories (e.g., PARAMETER, VALUE). |
 | **Total Semantic Relations** | 195,515 | Covers 6 relation types (e.g., `has_value`, `has_condition`). |
