@@ -26,13 +26,6 @@ Beyond generation, the pipeline meticulously prepares this data for deep learnin
   
 ---
 
-## 📉 The Bottleneck: Why Models Fail in Electronics
-
-While Document Understanding models (like LayoutLM and Donut) have revolutionized generic document processing, they remain ineffective in the electronics domain due to a critical Data Scarcity. There are simply no public, large-scale, annotated datasets for component datasheets.
-The resulting "Cold Start" problem forces companies to rely on fragile RegEx scripts or manual entry. This project flips the paradigm: instead of tweaking model architectures to handle low-resource tasks, we solve the root cause by engineering an infinite stream of high-quality, domain-specific training data, effectively unlocking the potential of State-of-the-Art Transformers for hardware engineering.
-
----
-
 # ✨ Key Features
 
 ⚛️ **Physics-Aware Data Generation**: Standard random generators fail in engineering. This engine implements an electrical constraints solver, ensuring that generated parameters obey physical laws. The data is engineeringly valid, not just syntactically correct.
@@ -94,15 +87,6 @@ Unlike standard OCR tools that produce flat text, the pipeline generates a perfe
  <img width="2816" height="1536" alt="Preprocessing _Pipeline" src="https://github.com/user-attachments/assets/0efcd442-a03c-4cd0-ae63-5813ddb5cc37" />
 Before feeding the generated data into the network, the raw HTML and JSONL undergo a rigorous preprocessing pipeline. The structural HTML is parsed into a continuous token stream while preserving its inherent layout context. The most critical step here is **Sub-word Token Alignment**. Because DeBERTa uses a sub-word tokenizer, a single engineering term might be split into multiple tokens. To maintain perfect label fidelity, the pipeline applies PyTorch's `-100` index masking trick: only the first sub-word receives the original BIO tag, while the rest are masked. This ensures the model learns precise entity boundaries without the loss function penalizing tokenization artifacts.
 
-
-### 3. 🧠 Model Training: Joint Entity & Relation Extraction
-
-The extraction engine is powered by a fine-tuned **DeBERTa** model, selected for its Disentangled Attention mechanism which excels at mapping long-range dependencies in dense technical texts. Instead of relying on a cascaded approach (which is prone to error propagation), the model utilizes a **Joint Extraction architecture**. A unified network simultaneously predicts token-level BIO tags (Named Entity Recognition) and classifies the semantic relations (e.g., `has_value`, `has_unit`) between them. By optimizing a combined loss function, the model inherently learns the structural and physical context of the datasheet.
-
-**Why DeBERTa-v3 for HTML Datasheets?**
-In technical HTML documents, an engineering parameter (e.g., $V_{DS}$) and its value (e.g., $50V$) might be separated by dozens of structural DOM tags (<td>, <tr>), whitespaces, and CSS classes. DeBERTa’s Disentangled Attention mechanism computes the content and relative position of tokens separately. This allows the model to deeply understand the long-range syntactic relationships between entities across complex table structures, far outperforming standard BERT models on dense, noisy HTML token streams.
-
----
 ### 🔬 Technical Deep-Dive & Architecture
 
 The pipeline utilizes robust NLP engineering practices to ensure high fidelity during tokenization, alignment, and joint extraction.
@@ -119,7 +103,31 @@ The extraction engine is powered by a **DeBERTa-v3-base** shared encoder with tw
 The joint loss is optimized with a heavier weight on NER to ensure stable relation extraction:
 $L=\alpha\cdot L_{NER}+\beta\cdot L_{RE}$ (where $\alpha=1.0$, $\beta=0.5$).
 
-## 📊 Dataset & Training Statistics
+---
+
+### 📊 Dataset & Training Statistics
+
+To prevent class imbalance—a notorious issue in relation extraction—**relation negative sampling is explicitly controlled with a 1:1 positive-to-negative ratio**.
+
+#### 📈 Dataset Scale & Complexity
+*(Note: Metrics based on a standard generation run of 8,000 components)*
+
+| Metric | Count / Details | Why it matters |
+| :--- | :--- | :--- |
+| **Total Generated Documents** | `8000` | Demonstrates pipeline scalability across diverse templates. |
+| **Avg. Tokens per Document** | `~X,XXX` | Exceeds standard 512-token limit, necessitating the sliding window mechanism. |
+| **Total Annotated Entities** | `~X.X Million` | Covers 7 semantic categories (e.g., PARAMETER, VALUE). |
+| **Total Semantic Relations** | `~X.X Million` | Covers 6 relation types (e.g., `has_value`, `has_condition`). |
+
+#### ⚙️ Hyperparameters & Training Strategy
+A seeded 90/10 train-validation split is used, with best checkpoint selection based on validation loss. We employ a **Differential Learning Rate strategy**, fine-tuning the base encoder carefully while training the task-specific heads more aggressively.
+
+| Parameter | Value | Parameter | Value |
+| :--- | :--- | :--- | :--- |
+| **Model** | `microsoft/deberta-v3-base` | **Max Sequence Length** | 512 |
+| **Effective Batch Size**| 8 | **Epochs** | 3 |
+| **Encoder LR** | 2e-5 | **Head LR** | 1e-4 (5× Encoder LR) |
+| **Weight Decay** | 0.01 | **Gradient Clipping** | 1.0 (FP16 Enabled) |
 
 ## 🔮 Roadmap & Future Scope (must edit)
 
