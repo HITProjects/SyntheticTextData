@@ -114,10 +114,10 @@ To prevent class imbalance—a notorious issue in relation extraction—**relati
 
 | Metric | Count / Details | Why it matters |
 | :--- | :--- | :--- |
-| **Total Generated Documents** | `8000` | Demonstrates pipeline scalability across diverse templates. |
-| **Avg. Tokens per Document** | `~X,XXX` | Exceeds standard 512-token limit, necessitating the sliding window mechanism. |
-| **Total Annotated Entities** | `~X.X Million` | Covers 7 semantic categories (e.g., PARAMETER, VALUE). |
-| **Total Semantic Relations** | `~X.X Million` | Covers 6 relation types (e.g., `has_value`, `has_condition`). |
+| **Total Generated Documents** | 11,862 | Demonstrates pipeline scalability across diverse templates. |
+| **Avg. Tokens per Document** | 379 | Exceeds standard 512-token limit, necessitating the sliding window mechanism. |
+| **Total Annotated Entities** | 518,824 | Covers 7 semantic categories (e.g., PARAMETER, VALUE). |
+| **Total Semantic Relations** | 195,515 | Covers 6 relation types (e.g., `has_value`, `has_condition`). |
 
 #### ⚙️ Hyperparameters & Training Strategy
 A seeded 90/10 train-validation split is used, with best checkpoint selection based on validation loss. We employ a **Differential Learning Rate strategy**, fine-tuning the base encoder carefully while training the task-specific heads more aggressively.
