@@ -9,6 +9,7 @@ While standard OCR solutions fail to interpret dense engineering tables and comp
 
 Beyond generation, the pipeline meticulously prepares this data for deep learning by parsing structural HTML as rich text and applying advanced sub-word token alignment (using PyTorch's masking techniques for BIO tags). Finally, this 100% accurate ground truth is used to fine-tune a DeBERTa model for Joint Entity & Relation Extraction, enabling it to semantically map complex hardware specifications without a single manual annotation.
 
+<img width="1408" height="768" alt="Gemini_Generated_Image_h0alkhh0alkhh0al" src="https://github.com/user-attachments/assets/a7a0e36b-7fa4-466e-b27e-53dc66088721" />
 
 ## 👥 Target Use Cases
 1. Hardware Engineers & R&D Teams:
@@ -56,6 +57,10 @@ Built on a modular Object-Oriented Design (OOD). Adding a new electronic compone
 
 ## 🧩 System Architecture
 
+### 1. The Synthetic Data Pipeline
+
+<img width="2816" height="1504" alt="Gemini_Generated_Image_kr0z7nkr0z7nkr0z" src="https://github.com/user-attachments/assets/a1cf2684-f4c8-4d4e-beec-ac861dc6b42d" />
+
 The generation pipeline ensures strict synchronization between the visual output and the Ground Truth. For each generated datasheet, a central coordinator executes the following sequence:
 
 **Dynamic Configuration (RenderingConfig):** Applies randomized structural rules across the document, such as hiding specific columns, transposing tables, or shifting long test conditions to footnotes.
@@ -68,17 +73,12 @@ The generation pipeline ensures strict synchronization between the visual output
 
    DatasheetJSONRenderer: Produces the 100% accurate training JSON. It outputs both entity-centric labels for NER and relation-centric triples (Subject-Predicate-    Object) to train the DeBERTa model on complex semantic relationships.
 
-<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/07218bf7-5035-418c-ad93-182636bb022f" />
-
----
-
-## Dynamic Template Generation Engine
+   ## Dynamic Template Generation Engine
 
 <img width="802" height="454" alt="image" src="https://github.com/user-attachments/assets/cd066f2b-d6fa-4389-b04d-291a1f9c9419" />
 
 Visual heterogeneity in action. The system creates diverse HTML/PDF representations for a single component ID, simulating the real-world chaos of unstructured datasheets.
 
----
 
 ## 📊 Outputs: From Unstructured HTML to Hierarchical JSON
 
@@ -87,10 +87,15 @@ Visual heterogeneity in action. The system creates diverse HTML/PDF representati
 
 Unlike standard OCR tools that produce flat text, the pipeline generates a perfectly matched JSONL Ground Truth. By atomizing parameters into granular attributes (Min/Typ/Max, Units, Conditions), it provides the rich hierarchical structure needed for Deep Learning models to understand physical correlations, going far beyond simple text recognition.
 
-### ⚙️ Data Preprocessing & Token Alignment
+
+ ### 2.⚙️ Data Preprocessing & Token Alignment
+ 
+ <img width="2816" height="1536" alt="Preprocessing _Pipeline" src="https://github.com/user-attachments/assets/0efcd442-a03c-4cd0-ae63-5813ddb5cc37" />
+
 Before feeding the generated data into the network, the raw HTML and JSONL undergo a rigorous preprocessing pipeline. The structural HTML is parsed into a continuous token stream while preserving its inherent layout context. The most critical step here is **Sub-word Token Alignment**. Because DeBERTa uses a sub-word tokenizer, a single engineering term might be split into multiple tokens. To maintain perfect label fidelity, the pipeline applies PyTorch's `-100` index masking trick: only the first sub-word receives the original BIO tag, while the rest are masked. This ensures the model learns precise entity boundaries without the loss function penalizing tokenization artifacts.
 
-### 🧠 Model Training: Joint Entity & Relation Extraction
+
+### 3. 🧠 Model Training: Joint Entity & Relation Extraction
 
 The extraction engine is powered by a fine-tuned **DeBERTa** model, selected for its Disentangled Attention mechanism which excels at mapping long-range dependencies in dense technical texts. Instead of relying on a cascaded approach (which is prone to error propagation), the model utilizes a **Joint Extraction architecture**. A unified network simultaneously predicts token-level BIO tags (Named Entity Recognition) and classifies the semantic relations (e.g., `has_value`, `has_unit`) between them. By optimizing a combined loss function, the model inherently learns the structural and physical context of the datasheet.
 
