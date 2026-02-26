@@ -36,6 +36,7 @@ The resulting "Cold Start" problem forces companies to rely on fragile RegEx scr
 # ✨ Key Features
 
 ⚛️ **Physics-Aware Data Generation**: Standard random generators fail in engineering. This engine implements an electrical constraints solver, ensuring that generated parameters obey physical laws. The data is engineeringly valid, not just syntactically correct.
+
     From the field: If the system generates a TO-220 package, the Physics Engine hard-codes the Thermal Resistance ($R_{\theta JC}$) to a realistic 0.5-2.0 °C/W.      The LLM is then mathematically locked to these facts, preventing it from hallucinating a physically impossible 50 °C/W for a high-power package.
 
 🤖 **GenAI-Powered Text Enrichment**
@@ -102,6 +103,23 @@ The extraction engine is powered by a fine-tuned **DeBERTa** model, selected for
 In technical HTML documents, an engineering parameter (e.g., $V_{DS}$) and its value (e.g., $50V$) might be separated by dozens of structural DOM tags (<td>, <tr>), whitespaces, and CSS classes. DeBERTa’s Disentangled Attention mechanism computes the content and relative position of tokens separately. This allows the model to deeply understand the long-range syntactic relationships between entities across complex table structures, far outperforming standard BERT models on dense, noisy HTML token streams.
 
 ---
+### 🔬 Technical Deep-Dive & Architecture
+
+The pipeline utilizes robust NLP engineering practices to ensure high fidelity during tokenization, alignment, and joint extraction.
+
+* **Structural Preservation:** Table structures are preserved using explicit structural tokens (`\t`, `\n`), enabling the model to learn cross-cell relationships without relying on heavy visual layout models.
+* **Overlapping Sliding Windows:** To handle long HTML documents that exceed standard transformer limits, the pipeline implements overlapping sliding windows (512 tokens, 50-token overlap). Crucially, it includes a **BIO boundary repair mechanism** (converting `I-` to `B-` at splits) to ensure valid entity sequences across segment boundaries.
+* **Relation Grounding:** Relations are grounded via normalized phrase matching and proximity-based disambiguation based on token indices, rather than fragile character offsets.
+
+#### 🧠 Joint Network Architecture
+The extraction engine is powered by a **DeBERTa-v3-base** shared encoder with two parallel heads:
+1. **Token-level classification head** for BIO-based Named Entity Recognition (NER).
+2. **Span-pooled pairwise classification head** for Relation Extraction (RE). For each candidate entity pair, span representations are obtained via mean pooling over subword tokens and concatenated before classification.
+
+The joint loss is optimized with a heavier weight on NER to ensure stable relation extraction:
+$L=\alpha\cdot L_{NER}+\beta\cdot L_{RE}$ (where $\alpha=1.0$, $\beta=0.5$).
+
+## 📊 Dataset & Training Statistics
 
 ## 🔮 Roadmap & Future Scope (must edit)
 
