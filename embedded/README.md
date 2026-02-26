@@ -130,6 +130,16 @@ A seeded 90/10 train-validation split is used, with best checkpoint selection ba
 | **Encoder LR** | 2e-5 | **Head LR** | 1e-4 (5× Encoder LR) |
 | **Weight Decay** | 0.01 | **Gradient Clipping** | 1.0 (FP16 Enabled) |
 
+### 📈 Training Results
+The model was trained for 3 epochs on a T4 GPU (FP16 enabled). 
+The smooth convergence of the loss function indicates high-quality synthetic data with clear semantic boundaries.
+
+| Epoch | Training Loss | Validation Loss | Status |
+| :--- | :--- | :--- | :--- |
+| 1 | 0.4237 | 0.0190 | 💾 Saved |
+| 2 | 0.0157 | 0.0093 | 💾 Saved |
+| 3 | 0.0103 | **0.0077** | 🏆 Best |
+
 ## 🔮 Roadmap & Future Scope (must edit)
 
 This project represents the **Data-Centric** foundation of a larger Document Understanding pipeline. While the current release focuses on the generation of high-fidelity synthetic data, the immediate roadmap involves leveraging this asset for downstream tasks:
