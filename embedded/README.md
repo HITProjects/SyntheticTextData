@@ -41,7 +41,7 @@ Physics-Aware Data Generation: Standard random generators fail in engineering. T
 🤖 **GenAI-Powered Text Enrichment**
 Integrates Local LLMs (via Ollama) to generate context-aware descriptive text, footnotes, and marketing disclaimers. This simulates the narrative variance found in real datasheets (e.g., TI vs. Vishay vs. ON Semi styles).
 
-🎯 **100% Accurate Ground Truth Labeling**
+🎯 **Perfect Label Alignment (Zero Annotation Noise)**
 Eliminates manual annotation. The pipeline generates synthetic HTML alongside perfectly structured BIO (Begin, Inside, Outside) tags and semantic relations. The labeling is handled deterministically by the generation script, guaranteeing zero noise in the Ground Truth.
 
 🧠 **Joint Entity & Relation Extraction (DeBERTa)**
@@ -98,7 +98,9 @@ Before feeding the generated data into the network, the raw HTML and JSONL under
 
 The extraction engine is powered by a fine-tuned **DeBERTa** model, selected for its Disentangled Attention mechanism which excels at mapping long-range dependencies in dense technical texts. Instead of relying on a cascaded approach (which is prone to error propagation), the model utilizes a **Joint Extraction architecture**. A unified network simultaneously predicts token-level BIO tags (Named Entity Recognition) and classifies the semantic relations (e.g., `has_value`, `has_unit`) between them. By optimizing a combined loss function, the model inherently learns the structural and physical context of the datasheet.
 
-## 🔮 Roadmap & Future Scope
+---
+
+## 🔮 Roadmap & Future Scope (must edit)
 
 This project represents the **Data-Centric** foundation of a larger Document Understanding pipeline. While the current release focuses on the generation of high-fidelity synthetic data, the immediate roadmap involves leveraging this asset for downstream tasks:
 
