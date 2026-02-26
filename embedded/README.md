@@ -83,7 +83,7 @@ The rendering engine generates diverse HTML DOM structures for a single componen
 ## 📊 Outputs: From Unstructured HTML to Hierarchical JSON
 
 
-<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/786c769f-79da-4de6-bf9f-9080db82b15a" />
+<img width="786" height="675" alt="image" src="https://github.com/user-attachments/assets/2f8b007a-9926-456e-b67a-c67e07119623" />
 
 Unlike standard OCR tools that produce flat text, the pipeline generates a perfectly matched JSONL Ground Truth. By atomizing parameters into granular attributes (Min/Typ/Max, Units, Conditions), it provides the rich hierarchical structure needed for Deep Learning models to understand physical correlations, going far beyond simple text recognition.
 
