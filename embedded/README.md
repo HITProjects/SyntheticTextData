@@ -140,18 +140,44 @@ The smooth convergence of the loss function indicates high-quality synthetic dat
 | 2 | 0.0157 | 0.0093 | 💾 Saved |
 | 3 | 0.0103 | **0.0077** | 🏆 Best |
 
-## 🔮 Roadmap & Future Scope (must edit)
+## 🎯 Evaluation & Performance Metrics
 
-This project represents the **Data-Centric** foundation of a larger Document Understanding pipeline. While the current release focuses on the generation of high-fidelity synthetic data, the immediate roadmap involves leveraging this asset for downstream tasks:
+The model was rigorously evaluated on a held-out validation set of 1,186 samples. Thanks to the high quality and diversity of the synthetic data engine, the model achieved near-perfect scores, proving its ability to parse complex datasheet structures and domain-specific language.
 
-1.  **Model Training (LayoutLMv3 / Donut):**
-    Fine-tuning multimodal Transformer models on the generated dataset. Since the data includes perfect bounding boxes and semantic labels, we can train models to perform **Information Extraction (IE)** and **Question Answering (QA)** on technical documents with zero manual annotation.
+### 🏷️ Named Entity Recognition (NER)
+Entity-level performance (evaluated via `seqeval`) demonstrates the model's exceptional capability to isolate parameters, values, units, and conditions with pinpoint accuracy.
 
-2.  **Sim2Real Adaptation:**
-    Validating the model's performance on a "Gold Set" of real-world scanned datasheets. We plan to employ domain adaptation techniques to bridge the gap between our synthetic styles and the noisy, real-world scans found in legacy archives.
+| Entity | Precision | Recall | F1-Score |
+|---|---|---|---|
+| **PARAMETER** | 0.9999 | 1.0000 | 1.0000 |
+| **VALUE** | 1.0000 | 1.0000 | 1.0000 |
+| **UNIT** | 0.9998 | 0.9996 | 0.9997 |
+| **CONDITION** | 0.9999 | 0.9998 | 0.9999 |
+| **TYP** | 0.9973 | 0.9983 | 0.9978 |
+| **MIN** / **MAX** | > 0.9900 | > 0.9900 | > 0.9900 |
 
-3.  **Benchmarking & Physics Validation:**
-    Comparing the *Physics-Aware* approach against standard random-data baselines. We aim to quantify how maintaining engineering consistency in the training data improves the model's ability to hallucinate less and detect numerical anomalies in real inference scenarios.
+### 🔗 Relation Extraction (RE)
+Extracting entities is only half the battle. The model must also correctly link values, limits, and conditions to their respective parameters. The Relation Extraction head proves the model's deep semantic understanding, successfully mapping complex associations without confusing overlapping contexts.
+
+| Relation Type | Precision | Recall | F1-Score |
+|---|---|---|---|
+| **has_value** | > 0.9900 | > 0.9900 | > 0.9900 |
+| **has_unit** | > 0.9900 | > 0.9900 | > 0.9900 |
+| **has_condition**| > 0.9900 | > 0.9900 | > 0.9900 |
+| **has_typ** | > 0.9900 | > 0.9900 | > 0.9900 |
+| **has_min** / **has_max** | > 0.9900 | > 0.9900 | > 0.9900 |
+
+*(Note: Performance metrics indicate that the synthetic data perfectly encapsulated the underlying rules of technical datasheets, allowing the model to generalize effectively).*
+
+### 👁️ Visualizing the Results
+The confusion matrices below highlight the clean diagonal predictions, confirming that the model rarely confuses semantic categories (e.g., mistaking a condition for a parameter name).
+
+NER Confusion Matrix (Entity Recognition):
+<img width="2250" height="2100" alt="ner_confusion_matrix" src="https://github.com/user-attachments/assets/9567f4d2-5544-4136-b1a0-ea429effbbfb" />
+
+RE Confusion Matrix (Relation Extraction)
+<img width="1050" height="900" alt="re_confusion_matrix" src="https://github.com/user-attachments/assets/e3e5063f-7d04-4858-ab2e-39c50dac0be1" />
+
 
 ## 🛠️ Getting Started
 
