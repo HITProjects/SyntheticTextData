@@ -6,7 +6,7 @@
 
 ## Overview
 
-This project addresses a core challenge in the electronics industry: extracting structured, machine-readable specifications from unstructured PDF datasheets at scale — without manual annotation.
+This project addresses a core challenge in the electronics industry: extracting structured, machine-readable specifications from PDF datasheets at scale. Since traditional text extraction strips away the spatial context of complex engineering tables, doing this without manual annotation requires a novel approach.
 
 ### The Challenge
 
