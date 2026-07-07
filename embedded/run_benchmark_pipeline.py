@@ -1,15 +1,17 @@
 """Run extraction pipeline on the 8 benchmark PDFs (one per component type)."""
 import sys, json, shutil
-sys.stdout.reconfigure(encoding='utf-8')
-sys.path.insert(0, r'C:\Users\nivsa\Generation of Synthetic Training Data\embedded\extraction_engine')
-
 from pathlib import Path
+sys.stdout.reconfigure(encoding='utf-8')
+
+_HERE = Path(__file__).parent
+sys.path.insert(0, str(_HERE / 'extraction_engine'))
+
 from pdf_inference_pipeline import PDFInferencePipeline
 
-BASE       = Path(r'C:\Users\nivsa\Generation of Synthetic Training Data\embedded')
-SRC_DIR    = BASE / 'example_datasheets'
-OUTPUT_DIR = BASE / 'output_results_benchmark'
-MODEL_PATH = BASE / 'models' / 'checkpoints'
+BASE        = _HERE
+SRC_DIR     = BASE / 'example_datasheets'
+OUTPUT_DIR  = BASE / 'output_results_benchmark'
+MODEL_PATH  = BASE / 'models' / 'checkpoints'
 ALIGNER_DIR = BASE / 'extraction_engine'
 
 BENCHMARK_FILES = {

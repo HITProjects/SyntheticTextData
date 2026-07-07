@@ -1,12 +1,14 @@
 """Run the full PDF inference pipeline and print a quality report."""
 import sys, json, shutil
-sys.stdout.reconfigure(encoding='utf-8')
-sys.path.insert(0, r'C:\Users\nivsa\Generation of Synthetic Training Data\embedded\extraction_engine')
-
 from pathlib import Path
+sys.stdout.reconfigure(encoding='utf-8')
+
+_HERE = Path(__file__).parent
+sys.path.insert(0, str(_HERE / 'extraction_engine'))
+
 from pdf_inference_pipeline import PDFInferencePipeline
 
-BASE        = Path(r'C:\Users\nivsa\Generation of Synthetic Training Data\embedded')
+BASE        = _HERE
 INPUT_DIR   = BASE / 'example_datasheets'
 OUTPUT_DIR  = BASE / 'output_results'
 ALIGNER_DIR = BASE / 'extraction_engine'

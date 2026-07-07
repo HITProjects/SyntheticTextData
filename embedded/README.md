@@ -88,7 +88,7 @@ Relation negative sampling is fixed at a 1:1 positive-to-negative ratio to preve
 | **Head LR** | 1e-4 | **Weight Decay** | 0.01 |
 | **Gradient Clipping** | 1.0 | **Mixed Precision** | FP16 |
 
-**Results (synthetic held-out set, ~4,550 samples):**
+**Results (synthetic held-out set, ~4,550 samples — evaluated on data from the same generator):**
 
 | Entity | F1-Score |
 |---|---|
@@ -98,6 +98,8 @@ Relation negative sampling is fixed at a 1:1 positive-to-negative ratio to preve
 | TYP | 0.998 |
 | MIN / MAX | > 0.990 |
 | **Overall NER F1** | **0.982** |
+
+> These scores reflect in-distribution performance. Real-world PDF extraction introduces layout noise not present in synthetic data — see the Discussion section below.
 
 ---
 
@@ -170,12 +172,8 @@ The honest conclusion is that the rule-based preprocessing stage currently carri
 
 ### Prerequisites
 - Python 3.8+
-- [Ollama](https://ollama.com/) with `qwen2.5:1.5b` (for data generation)
-- `wkhtmltopdf` (for rendering synthetic HTML to PDF)
-
-```bash
-ollama pull qwen2.5:1.5b
-```
+- [Ollama](https://ollama.com/) with `qwen2.5:1.5b` (for data generation only)
+- `wkhtmltopdf` (for rendering synthetic HTML to PDF — data generation only)
 
 ### Installation
 
@@ -185,15 +183,52 @@ cd SyntheticTextData/embedded
 pip install -r requirements.txt
 ```
 
+For data generation, also run:
+```bash
+ollama pull qwen2.5:1.5b
+```
+
 ### Usage
 
 ```bash
 # Generate synthetic training data
 python synthetic_pipeline/main.py
 
-# Run extraction on benchmark PDFs
+# Run extraction on a folder of PDFs
+python run_pipeline.py
+
+# Run extraction on the benchmark set
 python run_benchmark_pipeline.py
 
-# Evaluate results
+# Evaluate benchmark results
 python benchmark/evaluate_benchmark.py
+```
+
+### Output Format
+
+Each processed PDF produces a JSON file:
+
+```json
+{
+  "source_pdf": "IRF3205.pdf",
+  "component_type": "MOSFET",
+  "parameters": [
+    {
+      "parameter": "Drain-Source Breakdown Voltage",
+      "min": null,
+      "typ": null,
+      "max": null,
+      "unit": "V",
+      "condition": "VGS = 0V, ID = 250µA"
+    },
+    {
+      "parameter": "Gate Threshold Voltage",
+      "min": "2",
+      "typ": null,
+      "max": "4",
+      "unit": "V",
+      "condition": "VDS = VGS, ID = 250µA"
+    }
+  ]
+}
 ```

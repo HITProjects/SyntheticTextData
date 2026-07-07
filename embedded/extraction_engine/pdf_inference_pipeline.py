@@ -41,11 +41,11 @@ log = logging.getLogger(__name__)
 # נתיבים — שנה כאן בלבד
 # =============================================================================
 
-BASE        = r"C:\Users\nivsa\Generation of Synthetic Training Data\embedded"
-INPUT_DIR   = Path(BASE) / "example_datasheets"
-OUTPUT_DIR  = Path(BASE) / "output_results"
-ALIGNER_DIR = Path(BASE) / "extraction_engine"
-MODEL_PATH  = Path(BASE) / "models" / "checkpoints"
+BASE        = Path(__file__).parent.parent
+INPUT_DIR   = BASE / "example_datasheets"
+OUTPUT_DIR  = BASE / "output_results"
+ALIGNER_DIR = BASE / "extraction_engine"
+MODEL_PATH  = BASE / "models" / "checkpoints"
 
 # "auto" | "trained" | "base" | "dummy"
 NER_MODE = "auto"

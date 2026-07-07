@@ -1,0 +1,23 @@
+# Core ML
+torch>=2.0.0
+transformers==5.12.1
+sentencepiece>=0.1.99
+
+# PDF extraction
+pdfplumber>=0.9.0
+
+# HTML parsing
+beautifulsoup4>=4.12.0
+
+# Evaluation
+seqeval>=1.2.2
+scikit-learn>=1.3.0
+
+# Utilities
+numpy>=1.24.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Data generation (Step 1 only)
+# ollama  — install via: pip install ollama
+# wkhtmltopdf — system dependency, see https://wkhtmltopdf.org/downloads.html
