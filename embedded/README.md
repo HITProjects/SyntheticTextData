@@ -20,7 +20,7 @@ The approach is fully data-centric: a **Synthetic Data Factory** generates reali
 
 <img width="2816" height="1504" alt="synthetic_pipeline" src="https://github.com/user-attachments/assets/a1cf2684-f4c8-4d4e-beec-ac861dc6b42d" />
 
-A physics-aware engine generates realistic electronic component datasheets. For each document, a central coordinator applies randomised structural rules (hidden columns, transposed tables, footnote injection), then feeds the configured data into two synchronised renderers:
+A physics constraints engine generates realistic electronic component datasheets. For each document, a central coordinator applies randomised structural rules (hidden columns, transposed tables, footnote injection), then feeds the configured data into two synchronised renderers:
 
 - **HTML Renderer** — produces the visual datasheet with randomised CSS themes and layout noise.
 - **JSON Renderer** — produces the 100%-accurate ground-truth labels (BIO entity tags + relation triples), deterministically derived from the same configuration.
@@ -65,6 +65,8 @@ Two training formats are produced per document:
 ---
 
 ### Step 3 — Model Training (Joint NER + RE)
+
+**Model choice:** The pipeline converts HTML structure into a flat token sequence, making it a pure text classification problem. Document-layout models such as LayoutLM or MarkupLM require 2D spatial coordinates or DOM-tree inputs that are not reliably available from `pdfplumber` output. DeBERTa-v3-base was selected among text-only encoders for its disentangled attention mechanism, which improves handling of long sequences and rare engineering tokens compared to BERT or RoBERTa.
 
 A **DeBERTa-v3-base** shared encoder drives two parallel task heads:
 
@@ -132,6 +134,13 @@ Evaluated against 7 manually annotated real-world datasheets spanning all major 
 - **T1 — Discovery:** Parameter name found (word-overlap ≥ 60%).
 - **T2 — Value Accuracy:** Name found + numeric value within ±10% of gold.
 - **T3 — Full Match:** Name + value + unit all correct.
+
+**Ablation — contribution of the NER filter:**
+
+| System | T2-F1 (avg) |
+|---|---|
+| Rule-based preprocessing only | 0.579 |
+| + NER inclusion filter | **0.587** |
 
 **On the synthetic-to-real gap:** The model achieves NER F1 = 0.982 on synthetic data and T2-F1 = 0.587 on real PDFs. The gap reflects domain shift: real PDFs are processed through `pdfplumber`, which introduces merged cells, irregular spacing, and multi-level headers absent from the synthetic training distribution. The rule-based preprocessing stage and NER filter partially bridge this gap.
 
