@@ -232,3 +232,17 @@ Each processed PDF produces a JSON file:
   ]
 }
 ```
+
+---
+
+## Future Work
+
+**Closing the synthetic-to-real gap** is the most impactful next step. The most direct path is to route synthetic PDFs back through `pdfplumber` during training, aligning ground-truth labels to the noisy pdfplumber output rather than the original clean HTML. This would expose the model to the same merged cells, split tokens, and spacing artifacts it encounters at inference time.
+
+Additional directions:
+
+- **Noise injection during training** — programmatically inject pdfplumber-style artifacts (token splits, whitespace noise, merged cells) into the synthetic token sequences, without requiring a full PDF render cycle.
+- **Condition-column table handling** — improve parsing for tables where column headers are physical condition values (e.g. frequency, temperature) rather than Min/Typ/Max, which currently causes precision collapse on complex components such as voltage regulators and op-amps.
+- **Active learning on real datasheets** — use the existing model's predictions on real PDFs as weak labels; selectively annotate the low-confidence rows to build a small real-world fine-tuning set.
+- **Component type inference** — automatically detect component type from the datasheet rather than relying on filename or user input.
+- **Broader component coverage** — extend the synthetic data factory and physics constraints engine to additional component types (transistor arrays, optocouplers, sensors).
