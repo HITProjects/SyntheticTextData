@@ -1,0 +1,26 @@
+# Large model checkpoints
+models/
+
+# Training / processed data (GBs)
+data/
+
+# Pipeline outputs
+output_results/
+output_results_benchmark/
+_benchmark_input/
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Claude project files
+.claude/
+
+# Old Donut experiment
+donut-datasheets-finetuned/
+
+# Debug scripts
+debug_ner_inference.py
+debug_ner.py

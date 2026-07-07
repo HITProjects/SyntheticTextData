@@ -1,0 +1,552 @@
+{
+  "version": "1.0",
+  "description": "Gold standard annotations for real-world benchmark evaluation",
+  "components": [
+    {
+      "id": "1662528",
+      "type": "DIODE",
+      "source_pdf": "1662528.pdf",
+      "parameters": [
+        {
+          "canonical": "Peak Reverse Voltage",
+          "aliases": ["VRRM", "Maximum Recurrent Peak Reverse Voltage", "Peak Repetitive Reverse Voltage"],
+          "min": null, "typ": null, "max": "20",
+          "unit": "V", "unit_aliases": ["V", "Volts", "v"],
+          "condition": null
+        },
+        {
+          "canonical": "RMS Voltage",
+          "aliases": ["Maximum RMS Voltage", "VRMS", "RMS Reverse Voltage"],
+          "min": null, "typ": null, "max": "14",
+          "unit": "V", "unit_aliases": ["V"],
+          "condition": null
+        },
+        {
+          "canonical": "DC Blocking Voltage",
+          "aliases": ["Maximum DC Blocking Voltage", "VDC", "DC Reverse Voltage"],
+          "min": null, "typ": null, "max": "20",
+          "unit": "V", "unit_aliases": ["V"],
+          "condition": null
+        },
+        {
+          "canonical": "Average Forward Current",
+          "aliases": ["IF(AV)", "Maximum Average Forward Rectified Current", "Forward Current"],
+          "min": null, "typ": null, "max": "1",
+          "unit": "A", "unit_aliases": ["A", "Amps"],
+          "condition": null
+        },
+        {
+          "canonical": "Peak Surge Current",
+          "aliases": ["IFSM", "Peak Forward Surge Current", "Surge Current"],
+          "min": null, "typ": null, "max": "25",
+          "unit": "A", "unit_aliases": ["A"],
+          "condition": null
+        },
+        {
+          "canonical": "Forward Voltage at 1A",
+          "aliases": ["VF", "Maximum Instantaneous Forward Voltage at 1 A", "Forward Voltage"],
+          "min": null, "typ": null, "max": "0.45",
+          "unit": "V", "unit_aliases": ["V"],
+          "condition": "IF=1A"
+        },
+        {
+          "canonical": "Forward Voltage at 3A",
+          "aliases": ["Maximum Instantaneous Forward Voltage at 3 A"],
+          "min": null, "typ": null, "max": "0.75",
+          "unit": "V", "unit_aliases": ["V"],
+          "condition": "IF=3A"
+        },
+        {
+          "canonical": "Reverse Current at 25C",
+          "aliases": ["IR", "Maximum DC Reverse Current", "Reverse Leakage Current"],
+          "min": null, "typ": null, "max": "1",
+          "unit": "mA", "unit_aliases": ["mA"],
+          "condition": "TA=25°C"
+        },
+        {
+          "canonical": "Reverse Current at 100C",
+          "aliases": ["IR", "Maximum DC Reverse Current"],
+          "min": null, "typ": null, "max": "10",
+          "unit": "mA", "unit_aliases": ["mA"],
+          "condition": "TA=100°C"
+        },
+        {
+          "canonical": "Thermal Resistance Junction-to-Ambient",
+          "aliases": ["Rth(JA)", "RθJA", "Thermal Resistance JA", "Typical Thermal Resistance"],
+          "min": null, "typ": "100", "max": null,
+          "unit": "°C/W", "unit_aliases": ["°C/W", "°C / W", "degC/W", "C/W"],
+          "condition": "JA"
+        },
+        {
+          "canonical": "Thermal Resistance Junction-to-Case",
+          "aliases": ["Rth(JC)", "RθJC", "Thermal Resistance JC"],
+          "min": null, "typ": "45", "max": null,
+          "unit": "°C/W", "unit_aliases": ["°C/W", "°C / W", "degC/W"],
+          "condition": "JC"
+        },
+        {
+          "canonical": "Junction Capacitance",
+          "aliases": ["Cj", "Typical Junction Capacitance"],
+          "min": null, "typ": "55", "max": null,
+          "unit": "pF", "unit_aliases": ["pF"],
+          "condition": null
+        },
+        {
+          "canonical": "Operating Temperature",
+          "aliases": ["TJ", "Junction Temperature", "Operating Temperature Range"],
+          "min": "-65", "typ": null, "max": "125",
+          "unit": "°C", "unit_aliases": ["°C", "degC", "C"],
+          "condition": null
+        }
+      ]
+    },
+    {
+      "id": "2SC5994-D",
+      "type": "BJT",
+      "source_pdf": "2SC5994-D.PDF",
+      "parameters": [
+        {
+          "canonical": "Collector-Base Voltage",
+          "aliases": ["VCBO", "Collector to Base Voltage", "VCB"],
+          "min": null, "typ": null, "max": "100",
+          "unit": "V", "unit_aliases": ["V"],
+          "condition": "IE=0"
+        },
+        {
+          "canonical": "Collector-Emitter Voltage",
+          "aliases": ["VCEO", "Collector to Emitter Voltage", "VCE"],
+          "min": null, "typ": null, "max": "50",
+          "unit": "V", "unit_aliases": ["V"],
+          "condition": "IB=0"
+        },
+        {
+          "canonical": "Emitter-Base Voltage",
+          "aliases": ["VEBO", "Emitter to Base Voltage", "VEB"],
+          "min": null, "typ": null, "max": "6",
+          "unit": "V", "unit_aliases": ["V"],
+          "condition": "IC=0"
+        },
+        {
+          "canonical": "Collector Current",
+          "aliases": ["IC", "Collector Current Continuous"],
+          "min": null, "typ": null, "max": "2",
+          "unit": "A", "unit_aliases": ["A"],
+          "condition": null
+        },
+        {
+          "canonical": "Collector Current Pulse",
+          "aliases": ["ICP", "Pulsed Collector Current", "Collector Current Pulse"],
+          "min": null, "typ": null, "max": "4",
+          "unit": "A", "unit_aliases": ["A"],
+          "condition": null
+        },
+        {
+          "canonical": "Power Dissipation",
+          "aliases": ["PC", "PD", "Power Dissipation", "Total Power Dissipation"],
+          "min": null, "typ": null, "max": "900",
+          "unit": "mW", "unit_aliases": ["mW", "W"],
+          "condition": "TA=25°C"
+        },
+        {
+          "canonical": "DC Current Gain",
+          "aliases": ["hFE", "DC Current Gain", "Current Gain"],
+          "min": "40", "typ": null, "max": "200",
+          "unit": "", "unit_aliases": ["", "-", "—"],
+          "condition": "VCE=2V, IC=100mA"
+        },
+        {
+          "canonical": "Collector-Emitter Saturation Voltage",
+          "aliases": ["VCE(sat)", "VCEsat", "Saturation Voltage"],
+          "min": null, "typ": null, "max": "0.3",
+          "unit": "V", "unit_aliases": ["V"],
+          "condition": "IC=500mA, IB=50mA"
+        },
+        {
+          "canonical": "Transition Frequency",
+          "aliases": ["fT", "Gain Bandwidth Product", "Transition Frequency"],
+          "min": null, "typ": "420", "max": null,
+          "unit": "MHz", "unit_aliases": ["MHz"],
+          "condition": "VCE=10V, IC=50mA"
+        },
+        {
+          "canonical": "Output Capacitance",
+          "aliases": ["Cob", "Output Capacitance", "Collector Capacitance"],
+          "min": null, "typ": null, "max": "10",
+          "unit": "pF", "unit_aliases": ["pF"],
+          "condition": "VCB=10V"
+        },
+        {
+          "canonical": "Junction Temperature",
+          "aliases": ["TJ", "Junction Temperature", "Operating Temperature"],
+          "min": null, "typ": null, "max": "150",
+          "unit": "°C", "unit_aliases": ["°C", "degC"],
+          "condition": null
+        },
+        {
+          "canonical": "Thermal Resistance Junction-to-Ambient",
+          "aliases": ["Rth(JA)", "RθJA", "Thermal Resistance"],
+          "min": null, "typ": null, "max": "139",
+          "unit": "°C/W", "unit_aliases": ["°C/W", "°C / W"],
+          "condition": null
+        }
+      ]
+    },
+    {
+      "id": "infineon-irf3205-datasheet-en",
+      "type": "MOSFET",
+      "source_pdf": "infineon-irf3205-datasheet-en.pdf",
+      "parameters": [
+        {
+          "canonical": "Drain-Source Voltage",
+          "aliases": ["VDS", "Drain to Source Voltage", "Drain-Source Voltage"],
+          "min": null, "typ": null, "max": "55",
+          "unit": "V", "unit_aliases": ["V"],
+          "condition": null
+        },
+        {
+          "canonical": "Continuous Drain Current at 25C",
+          "aliases": ["ID", "Continuous Drain Current", "Drain Current"],
+          "min": null, "typ": null, "max": "110",
+          "unit": "A", "unit_aliases": ["A"],
+          "condition": "TC=25°C"
+        },
+        {
+          "canonical": "Continuous Drain Current at 100C",
+          "aliases": ["ID", "Continuous Drain Current"],
+          "min": null, "typ": null, "max": "80",
+          "unit": "A", "unit_aliases": ["A"],
+          "condition": "TC=100°C"
+        },
+        {
+          "canonical": "Pulsed Drain Current",
+          "aliases": ["IDM", "Pulsed Drain Current"],
+          "min": null, "typ": null, "max": "390",
+          "unit": "A", "unit_aliases": ["A"],
+          "condition": null
+        },
+        {
+          "canonical": "Power Dissipation",
+          "aliases": ["PD", "Power Dissipation", "Total Power Dissipation"],
+          "min": null, "typ": null, "max": "200",
+          "unit": "W", "unit_aliases": ["W"],
+          "condition": "TC=25°C"
+        },
+        {
+          "canonical": "Gate-Source Voltage",
+          "aliases": ["VGS", "Gate to Source Voltage", "Gate-Source Voltage"],
+          "min": null, "typ": null, "max": "20",
+          "unit": "V", "unit_aliases": ["V"],
+          "condition": null
+        },
+        {
+          "canonical": "Gate Threshold Voltage",
+          "aliases": ["VGS(th)", "Gate Threshold Voltage", "Threshold Voltage"],
+          "min": "2.0", "typ": "3.0", "max": "4.0",
+          "unit": "V", "unit_aliases": ["V"],
+          "condition": "VDS=VGS, ID=250µA"
+        },
+        {
+          "canonical": "Drain-Source On-Resistance",
+          "aliases": ["RDS(on)", "On-State Resistance", "Drain-Source Resistance"],
+          "min": null, "typ": "5.8", "max": "8.0",
+          "unit": "mΩ", "unit_aliases": ["mΩ", "mOhm", "mohm", "mΩ"],
+          "condition": "VGS=10V, ID=62A"
+        },
+        {
+          "canonical": "Input Capacitance",
+          "aliases": ["Ciss", "Input Capacitance"],
+          "min": null, "typ": "3247", "max": null,
+          "unit": "pF", "unit_aliases": ["pF"],
+          "condition": "VDS=25V, VGS=0V"
+        },
+        {
+          "canonical": "Output Capacitance",
+          "aliases": ["Coss", "Output Capacitance"],
+          "min": null, "typ": "781", "max": null,
+          "unit": "pF", "unit_aliases": ["pF"],
+          "condition": "VDS=25V, VGS=0V"
+        },
+        {
+          "canonical": "Reverse Transfer Capacitance",
+          "aliases": ["Crss", "Reverse Transfer Capacitance", "Miller Capacitance"],
+          "min": null, "typ": "211", "max": null,
+          "unit": "pF", "unit_aliases": ["pF"],
+          "condition": "VDS=25V, VGS=0V"
+        },
+        {
+          "canonical": "Total Gate Charge",
+          "aliases": ["Qg", "Total Gate Charge", "Gate Charge"],
+          "min": null, "typ": "146", "max": null,
+          "unit": "nC", "unit_aliases": ["nC"],
+          "condition": "VDD=44V, ID=62A, VGS=10V"
+        },
+        {
+          "canonical": "Turn-On Delay Time",
+          "aliases": ["td(on)", "Turn-On Delay"],
+          "min": null, "typ": "12", "max": null,
+          "unit": "ns", "unit_aliases": ["ns"],
+          "condition": null
+        },
+        {
+          "canonical": "Rise Time",
+          "aliases": ["tr", "Rise Time"],
+          "min": null, "typ": "87", "max": null,
+          "unit": "ns", "unit_aliases": ["ns"],
+          "condition": null
+        },
+        {
+          "canonical": "Turn-Off Delay Time",
+          "aliases": ["td(off)", "Turn-Off Delay"],
+          "min": null, "typ": "44", "max": null,
+          "unit": "ns", "unit_aliases": ["ns"],
+          "condition": null
+        },
+        {
+          "canonical": "Fall Time",
+          "aliases": ["tf", "Fall Time"],
+          "min": null, "typ": "71", "max": null,
+          "unit": "ns", "unit_aliases": ["ns"],
+          "condition": null
+        },
+        {
+          "canonical": "Diode Forward Voltage",
+          "aliases": ["VSD", "Body Diode Forward Voltage", "Source-Drain Voltage"],
+          "min": null, "typ": "1.2", "max": "1.5",
+          "unit": "V", "unit_aliases": ["V"],
+          "condition": "IS=62A, VGS=0V"
+        },
+        {
+          "canonical": "Reverse Recovery Time",
+          "aliases": ["trr", "Reverse Recovery Time"],
+          "min": null, "typ": "69", "max": "104",
+          "unit": "ns", "unit_aliases": ["ns"],
+          "condition": null
+        },
+        {
+          "canonical": "Thermal Resistance Junction-to-Case",
+          "aliases": ["Rth(JC)", "RθJC", "Thermal Resistance JC"],
+          "min": null, "typ": null, "max": "0.75",
+          "unit": "°C/W", "unit_aliases": ["°C/W", "°C / W"],
+          "condition": null
+        },
+        {
+          "canonical": "Thermal Resistance Junction-to-Ambient",
+          "aliases": ["Rth(JA)", "RθJA", "Thermal Resistance JA"],
+          "min": null, "typ": null, "max": "62",
+          "unit": "°C/W", "unit_aliases": ["°C/W", "°C / W"],
+          "condition": null
+        }
+      ]
+    },
+    {
+      "id": "lm741",
+      "type": "OPAMP",
+      "source_pdf": "lm741.pdf",
+      "parameters": [
+        {
+          "canonical": "Supply Voltage",
+          "aliases": ["VS", "Supply Voltage", "Supplyvoltage", "Power Supply Voltage"],
+          "min": null, "typ": null, "max": "22",
+          "unit": "V", "unit_aliases": ["V"],
+          "condition": null
+        },
+        {
+          "canonical": "Power Dissipation",
+          "aliases": ["PD", "Power Dissipation", "Powerdissipation"],
+          "min": null, "typ": null, "max": "500",
+          "unit": "mW", "unit_aliases": ["mW"],
+          "condition": null
+        },
+        {
+          "canonical": "Differential Input Voltage",
+          "aliases": ["VID", "Differential Input Voltage", "Differentialinputvoltage"],
+          "min": null, "typ": null, "max": "30",
+          "unit": "V", "unit_aliases": ["V"],
+          "condition": null
+        },
+        {
+          "canonical": "Input Voltage Range",
+          "aliases": ["VIN", "Input Voltage", "Common Mode Input Voltage", "Inputvoltage"],
+          "min": null, "typ": null, "max": "15",
+          "unit": "V", "unit_aliases": ["V"],
+          "condition": null
+        },
+        {
+          "canonical": "Input Offset Voltage",
+          "aliases": ["VOS", "Vos", "Input Offset Voltage"],
+          "min": null, "typ": "1.0", "max": "6.0",
+          "unit": "mV", "unit_aliases": ["mV"],
+          "condition": "TA=25°C"
+        },
+        {
+          "canonical": "Input Bias Current",
+          "aliases": ["IB", "Input Bias Current", "Bias Current"],
+          "min": null, "typ": "80", "max": "500",
+          "unit": "nA", "unit_aliases": ["nA"],
+          "condition": "TA=25°C"
+        },
+        {
+          "canonical": "Input Offset Current",
+          "aliases": ["IOS", "Input Offset Current"],
+          "min": null, "typ": "20", "max": "200",
+          "unit": "nA", "unit_aliases": ["nA"],
+          "condition": "TA=25°C"
+        },
+        {
+          "canonical": "Large Signal Voltage Gain",
+          "aliases": ["AVOL", "Open Loop Gain", "Large Signal Voltage Gain", "Voltage Gain"],
+          "min": "50000", "typ": "200000", "max": null,
+          "unit": "V/V", "unit_aliases": ["V/V", ""],
+          "condition": "VS=±15V, RL=2kΩ"
+        },
+        {
+          "canonical": "Output Voltage Swing",
+          "aliases": ["VO", "Output Voltage Swing", "Output Voltage Range"],
+          "min": "-12", "typ": null, "max": "12",
+          "unit": "V", "unit_aliases": ["V"],
+          "condition": "VS=±15V, RL=2kΩ"
+        },
+        {
+          "canonical": "Common Mode Rejection Ratio",
+          "aliases": ["CMRR", "Common Mode Rejection Ratio"],
+          "min": "70", "typ": "90", "max": null,
+          "unit": "dB", "unit_aliases": ["dB"],
+          "condition": null
+        },
+        {
+          "canonical": "Slew Rate",
+          "aliases": ["SR", "Slew Rate"],
+          "min": null, "typ": "0.5", "max": null,
+          "unit": "V/µs", "unit_aliases": ["V/µs", "V/us", "V/μs"],
+          "condition": "VS=±15V"
+        },
+        {
+          "canonical": "Operating Temperature",
+          "aliases": ["TA", "Operating Temperature", "Temperature Range"],
+          "min": "0", "typ": null, "max": "70",
+          "unit": "°C", "unit_aliases": ["°C", "degC"],
+          "condition": null
+        }
+      ]
+    },
+    {
+      "id": "e-hd",
+      "type": "CAPACITOR",
+      "source_pdf": "e-hd.pdf",
+      "parameters": [
+        {
+          "canonical": "Category Temperature Range",
+          "aliases": ["Temperature Range", "Operating Temperature", "Temp Range"],
+          "min": "-40", "typ": null, "max": "105",
+          "unit": "°C", "unit_aliases": ["°C", "˚C", "degC", "C"],
+          "condition": null
+        },
+        {
+          "canonical": "Rated Voltage Range",
+          "aliases": ["Voltage Range", "Rated Voltage", "Working Voltage"],
+          "min": "6.3", "typ": null, "max": "50",
+          "unit": "V", "unit_aliases": ["V", "Volts"],
+          "condition": null
+        },
+        {
+          "canonical": "Rated Capacitance Range",
+          "aliases": ["Capacitance Range", "Rated Capacitance", "Capacitance"],
+          "min": "22", "typ": null, "max": "6800",
+          "unit": "µF", "unit_aliases": ["µF", "uF", "μF", "microF"],
+          "condition": null
+        },
+        {
+          "canonical": "Capacitance Tolerance",
+          "aliases": ["Tolerance", "Capacitance Tolerance", "Cap Tolerance"],
+          "min": null, "typ": null, "max": "20",
+          "unit": "%", "unit_aliases": ["%"],
+          "condition": "120Hz, 20°C"
+        }
+      ]
+    },
+    {
+      "id": "GP-1671375",
+      "type": "RESISTOR",
+      "source_pdf": "GP-1671375.pdf",
+      "parameters": [
+        {
+          "canonical": "Maximum Working Voltage",
+          "aliases": ["Working Voltage", "Max Voltage", "Maximum Voltage"],
+          "min": "200", "typ": null, "max": "350",
+          "unit": "V", "unit_aliases": ["V", "Volts"],
+          "condition": null
+        },
+        {
+          "canonical": "Resistance Temperature Coefficient",
+          "aliases": ["TCR", "Temperature Coefficient of Resistance", "Temperature Coefficient"],
+          "min": "25", "typ": null, "max": "100",
+          "unit": "ppm/°C", "unit_aliases": ["ppm/°C", "ppm/C", "±ppm/°C", "ppm"],
+          "condition": null
+        }
+      ]
+    },
+    {
+      "id": "tps7a02",
+      "type": "VOLTAGE_REGULATOR",
+      "source_pdf": "tps7a02.pdf",
+      "parameters": [
+        {
+          "canonical": "Input Voltage",
+          "aliases": ["VIN", "Input Voltage", "Supply Voltage"],
+          "min": "1.4", "typ": null, "max": "6.5",
+          "unit": "V", "unit_aliases": ["V"],
+          "condition": null
+        },
+        {
+          "canonical": "Output Voltage",
+          "aliases": ["VOUT", "Output Voltage", "Regulated Output Voltage"],
+          "min": "0.8", "typ": null, "max": "5.0",
+          "unit": "V", "unit_aliases": ["V"],
+          "condition": null
+        },
+        {
+          "canonical": "Output Current",
+          "aliases": ["IOUT", "Output Current", "Load Current"],
+          "min": null, "typ": null, "max": "300",
+          "unit": "mA", "unit_aliases": ["mA"],
+          "condition": null
+        },
+        {
+          "canonical": "Quiescent Current",
+          "aliases": ["IQ", "Quiescent Current", "Ground Current"],
+          "min": null, "typ": "350", "max": "550",
+          "unit": "nA", "unit_aliases": ["nA", "µA", "uA"],
+          "condition": "IOUT=0"
+        },
+        {
+          "canonical": "Dropout Voltage",
+          "aliases": ["VDO", "Dropout Voltage", "VDROP"],
+          "min": null, "typ": "200", "max": "350",
+          "unit": "mV", "unit_aliases": ["mV"],
+          "condition": "IOUT=300mA"
+        },
+        {
+          "canonical": "Output Voltage Accuracy",
+          "aliases": ["Accuracy", "Output Voltage Accuracy", "Voltage Regulation"],
+          "min": "-1", "typ": null, "max": "1",
+          "unit": "%", "unit_aliases": ["%"],
+          "condition": null
+        },
+        {
+          "canonical": "Operating Temperature",
+          "aliases": ["TA", "Operating Temperature", "Temperature Range"],
+          "min": "-40", "typ": null, "max": "125",
+          "unit": "°C", "unit_aliases": ["°C", "degC"],
+          "condition": null
+        },
+        {
+          "canonical": "PSRR",
+          "aliases": ["PSRR", "Power Supply Rejection Ratio"],
+          "min": null, "typ": "50", "max": null,
+          "unit": "dB", "unit_aliases": ["dB"],
+          "condition": "f=1kHz"
+        }
+      ]
+    }
+  ]
+}

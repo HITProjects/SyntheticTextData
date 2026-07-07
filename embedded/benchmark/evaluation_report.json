@@ -1,0 +1,1493 @@
+{
+  "summary": {
+    "avg_tier1_f1": 0.642,
+    "avg_tier2_f1": 0.587,
+    "avg_tier3_f1": 0.587,
+    "components_evaluated": 7
+  },
+  "per_component": [
+    {
+      "component": "1662528",
+      "type": "DIODE",
+      "gold_count": 13,
+      "pred_count": 11,
+      "tier1": {
+        "precision": 1.0,
+        "recall": 0.846,
+        "f1": 0.917,
+        "tp": 11,
+        "fp": 0,
+        "fn": 2
+      },
+      "tier2": {
+        "precision": 1.0,
+        "recall": 0.846,
+        "f1": 0.917
+      },
+      "tier3": {
+        "precision": 1.0,
+        "recall": 0.846,
+        "f1": 0.917
+      },
+      "details": [
+        {
+          "gold": "Peak Reverse Voltage",
+          "pred": "Maximum Re current Peak Reverse Voltage",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "20"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "20"
+          },
+          "gold_unit": "V",
+          "pred_unit": "V",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "RMS Voltage",
+          "pred": "Maximum RMS Voltage",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "14"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "14"
+          },
+          "gold_unit": "V",
+          "pred_unit": "V",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "DC Blocking Voltage",
+          "pred": "Maximum DC Blocking Voltage",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "20"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "20"
+          },
+          "gold_unit": "V",
+          "pred_unit": "V",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Average Forward Current",
+          "pred": "Maximum Average Forward Rectified Current 0.375 Inches (9.5 mm) Lead Length at T = 90°C L",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "1"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "1"
+          },
+          "gold_unit": "A",
+          "pred_unit": "A",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Peak Surge Current",
+          "pred": "Peak Forward Surge Current, 8.3 ms Single Half Sine-wave Superimposed on Rated Load (JEDEC method)",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "25"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "25"
+          },
+          "gold_unit": "A",
+          "pred_unit": "A",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Forward Voltage at 1A",
+          "pred": "Maximum Instantaneous Forward Voltage at 1 A",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "0.45"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "0.45"
+          },
+          "gold_unit": "V",
+          "pred_unit": "V",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Forward Voltage at 3A",
+          "pred": "Maximum Instantaneous Forward Voltage at 3 A",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "0.75"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "0.75"
+          },
+          "gold_unit": "V",
+          "pred_unit": "V",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Reverse Current at 25C",
+          "pred": "Maximum DC Reverse Current at T = 25°C A at Rated DC Blocking Voltage at T = 100°C A",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "1"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "1"
+          },
+          "gold_unit": "mA",
+          "pred_unit": "mA",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Reverse Current at 100C",
+          "pred": null,
+          "tier1": "MISS",
+          "tier2": "MISS",
+          "tier3": "MISS"
+        },
+        {
+          "gold": "Thermal Resistance Junction-to-Ambient",
+          "pred": "Typical Thermal Resistance (Note 1)",
+          "gold_values": {
+            "min": null,
+            "typ": "100",
+            "max": null
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "100"
+          },
+          "gold_unit": "°C/W",
+          "pred_unit": "°C / W",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Thermal Resistance Junction-to-Case",
+          "pred": null,
+          "tier1": "MISS",
+          "tier2": "MISS",
+          "tier3": "MISS"
+        },
+        {
+          "gold": "Junction Capacitance",
+          "pred": "Typical Junction Capacitance (Note 2)",
+          "gold_values": {
+            "min": null,
+            "typ": "55",
+            "max": null
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "55"
+          },
+          "gold_unit": "pF",
+          "pred_unit": "pF",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Operating Temperature",
+          "pred": "Operating Temperature Range",
+          "gold_values": {
+            "min": "-65",
+            "typ": null,
+            "max": "125"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "-65"
+          },
+          "gold_unit": "°C",
+          "pred_unit": "°C",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        }
+      ]
+    },
+    {
+      "component": "2SC5994-D",
+      "type": "BJT",
+      "gold_count": 12,
+      "pred_count": 18,
+      "tier1": {
+        "precision": 0.556,
+        "recall": 0.833,
+        "f1": 0.667,
+        "tp": 10,
+        "fp": 8,
+        "fn": 2
+      },
+      "tier2": {
+        "precision": 0.5,
+        "recall": 0.667,
+        "f1": 0.571
+      },
+      "tier3": {
+        "precision": 0.5,
+        "recall": 0.667,
+        "f1": 0.571
+      },
+      "details": [
+        {
+          "gold": "Collector-Base Voltage",
+          "pred": "Collector to Base Voltage",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "100"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "100"
+          },
+          "gold_unit": "V",
+          "pred_unit": "V",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Collector-Emitter Voltage",
+          "pred": "Collector to Emitter Voltage",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "50"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "100"
+          },
+          "gold_unit": "V",
+          "pred_unit": "V",
+          "tier1": "HIT",
+          "tier2": "WRONG_VALUE",
+          "tier3": "WRONG_VALUE"
+        },
+        {
+          "gold": "Emitter-Base Voltage",
+          "pred": "Emitter to Base Voltage",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "6"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "6"
+          },
+          "gold_unit": "V",
+          "pred_unit": "V",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Collector Current",
+          "pred": "Collector Current",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "2"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "2"
+          },
+          "gold_unit": "A",
+          "pred_unit": "A",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Collector Current Pulse",
+          "pred": "Collector Current (Pulse)",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "4"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "4"
+          },
+          "gold_unit": "A",
+          "pred_unit": "A",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Power Dissipation",
+          "pred": null,
+          "tier1": "MISS",
+          "tier2": "MISS",
+          "tier3": "MISS"
+        },
+        {
+          "gold": "DC Current Gain",
+          "pred": "DC Current Gain",
+          "gold_values": {
+            "min": "40",
+            "typ": null,
+            "max": "200"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "200"
+          },
+          "gold_unit": "",
+          "pred_unit": null,
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Collector-Emitter Saturation Voltage",
+          "pred": "Collector to Emitter Saturation Voltage",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "0.3"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "135"
+          },
+          "gold_unit": "V",
+          "pred_unit": "300 mV",
+          "tier1": "HIT",
+          "tier2": "WRONG_VALUE",
+          "tier3": "WRONG_VALUE"
+        },
+        {
+          "gold": "Transition Frequency",
+          "pred": "Gain-Bandwidth Product",
+          "gold_values": {
+            "min": null,
+            "typ": "420",
+            "max": null
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "420"
+          },
+          "gold_unit": "MHz",
+          "pred_unit": "MHz",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Output Capacitance",
+          "pred": "Output Capacitance",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "10"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "9"
+          },
+          "gold_unit": "pF",
+          "pred_unit": "pF",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Junction Temperature",
+          "pred": "Junction Temperature",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "150"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "150"
+          },
+          "gold_unit": "°C",
+          "pred_unit": "°C",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Thermal Resistance Junction-to-Ambient",
+          "pred": null,
+          "tier1": "MISS",
+          "tier2": "MISS",
+          "tier3": "MISS"
+        }
+      ]
+    },
+    {
+      "component": "infineon-irf3205-datasheet-en",
+      "type": "MOSFET",
+      "gold_count": 20,
+      "pred_count": 38,
+      "tier1": {
+        "precision": 0.526,
+        "recall": 1.0,
+        "f1": 0.69,
+        "tp": 20,
+        "fp": 18,
+        "fn": 0
+      },
+      "tier2": {
+        "precision": 0.486,
+        "recall": 0.85,
+        "f1": 0.618
+      },
+      "tier3": {
+        "precision": 0.486,
+        "recall": 0.85,
+        "f1": 0.618
+      },
+      "details": [
+        {
+          "gold": "Drain-Source Voltage",
+          "pred": "V(BR)DSS Drain-to-Source Breakdown Voltage",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "55"
+          },
+          "pred_values": {
+            "min": "55",
+            "typ": "---",
+            "max": "---"
+          },
+          "gold_unit": "V",
+          "pred_unit": "V",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Continuous Drain Current at 25C",
+          "pred": "I @ T = 25°C D C Continuous Drain Current, V @ 10V GS",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "110"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "110"
+          },
+          "gold_unit": "A",
+          "pred_unit": "A",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Continuous Drain Current at 100C",
+          "pred": "I @ T = 100°C D C Continuous Drain Current, V @ 10V GS",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "80"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "80"
+          },
+          "gold_unit": "A",
+          "pred_unit": "A",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Pulsed Drain Current",
+          "pred": "I DM Pulsed Drain Current",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "390"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "390"
+          },
+          "gold_unit": "A",
+          "pred_unit": "A",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Power Dissipation",
+          "pred": "P @T = 25°C D C Power Dissipation",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "200"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "200"
+          },
+          "gold_unit": "W",
+          "pred_unit": "W",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Gate-Source Voltage",
+          "pred": "V GS Gate-to-Source Voltage",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "20"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": null,
+            "max": "± 20"
+          },
+          "gold_unit": "V",
+          "pred_unit": "V",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Gate Threshold Voltage",
+          "pred": "VGS(th) Gate Threshold Voltage",
+          "gold_values": {
+            "min": "2.0",
+            "typ": "3.0",
+            "max": "4.0"
+          },
+          "pred_values": {
+            "min": "2.0",
+            "typ": "---",
+            "max": "4.0"
+          },
+          "gold_unit": "V",
+          "pred_unit": "V",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Drain-Source On-Resistance",
+          "pred": "RDS(on) Static Drain-to-Source On-Resistance",
+          "gold_values": {
+            "min": null,
+            "typ": "5.8",
+            "max": "8.0"
+          },
+          "pred_values": {
+            "min": "---",
+            "typ": "---",
+            "max": "8.0"
+          },
+          "gold_unit": "mΩ",
+          "pred_unit": "mΩ",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Input Capacitance",
+          "pred": "Ciss Input Capacitance",
+          "gold_values": {
+            "min": null,
+            "typ": "3247",
+            "max": null
+          },
+          "pred_values": {
+            "min": "---",
+            "typ": "3247",
+            "max": "---"
+          },
+          "gold_unit": "pF",
+          "pred_unit": "pF",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Output Capacitance",
+          "pred": "Coss Output Capacitance",
+          "gold_values": {
+            "min": null,
+            "typ": "781",
+            "max": null
+          },
+          "pred_values": {
+            "min": "---",
+            "typ": "781",
+            "max": "---"
+          },
+          "gold_unit": "pF",
+          "pred_unit": "pF",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Reverse Transfer Capacitance",
+          "pred": "Crss Reverse Transfer Capacitance",
+          "gold_values": {
+            "min": null,
+            "typ": "211",
+            "max": null
+          },
+          "pred_values": {
+            "min": "---",
+            "typ": "211",
+            "max": "---"
+          },
+          "gold_unit": "pF",
+          "pred_unit": "pF",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Total Gate Charge",
+          "pred": "Qg Total Gate Charge",
+          "gold_values": {
+            "min": null,
+            "typ": "146",
+            "max": null
+          },
+          "pred_values": {
+            "min": "---",
+            "typ": "---",
+            "max": "146"
+          },
+          "gold_unit": "nC",
+          "pred_unit": "nC",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Turn-On Delay Time",
+          "pred": "td(on) Turn-On Delay Time",
+          "gold_values": {
+            "min": null,
+            "typ": "12",
+            "max": null
+          },
+          "pred_values": {
+            "min": "---",
+            "typ": "14",
+            "max": "---"
+          },
+          "gold_unit": "ns",
+          "pred_unit": "ns",
+          "tier1": "HIT",
+          "tier2": "WRONG_VALUE",
+          "tier3": "WRONG_VALUE"
+        },
+        {
+          "gold": "Rise Time",
+          "pred": "tr Rise Time",
+          "gold_values": {
+            "min": null,
+            "typ": "87",
+            "max": null
+          },
+          "pred_values": {
+            "min": "---",
+            "typ": "101",
+            "max": "---"
+          },
+          "gold_unit": "ns",
+          "pred_unit": "ns",
+          "tier1": "HIT",
+          "tier2": "WRONG_VALUE",
+          "tier3": "WRONG_VALUE"
+        },
+        {
+          "gold": "Turn-Off Delay Time",
+          "pred": "td(off) Turn-Off Delay Time",
+          "gold_values": {
+            "min": null,
+            "typ": "44",
+            "max": null
+          },
+          "pred_values": {
+            "min": "---",
+            "typ": "50",
+            "max": "---"
+          },
+          "gold_unit": "ns",
+          "pred_unit": "ns",
+          "tier1": "HIT",
+          "tier2": "WRONG_VALUE",
+          "tier3": "WRONG_VALUE"
+        },
+        {
+          "gold": "Fall Time",
+          "pred": "tf Fall Time",
+          "gold_values": {
+            "min": null,
+            "typ": "71",
+            "max": null
+          },
+          "pred_values": {
+            "min": "---",
+            "typ": "65",
+            "max": "---"
+          },
+          "gold_unit": "ns",
+          "pred_unit": "ns",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Diode Forward Voltage",
+          "pred": "VSD Diode Forward Voltage",
+          "gold_values": {
+            "min": null,
+            "typ": "1.2",
+            "max": "1.5"
+          },
+          "pred_values": {
+            "min": "---",
+            "typ": "---",
+            "max": "1.3"
+          },
+          "gold_unit": "V",
+          "pred_unit": "V",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Reverse Recovery Time",
+          "pred": "trr Reverse Recovery Time",
+          "gold_values": {
+            "min": null,
+            "typ": "69",
+            "max": "104"
+          },
+          "pred_values": {
+            "min": "---",
+            "typ": "69",
+            "max": "104"
+          },
+          "gold_unit": "ns",
+          "pred_unit": "ns",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Thermal Resistance Junction-to-Case",
+          "pred": "RθJC Junction-to-Case",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "0.75"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": "---",
+            "max": "0.75"
+          },
+          "gold_unit": "°C/W",
+          "pred_unit": "°C/W",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Thermal Resistance Junction-to-Ambient",
+          "pred": "RθJA Junction-to-Ambient",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "62"
+          },
+          "pred_values": {
+            "min": null,
+            "typ": "---",
+            "max": "62"
+          },
+          "gold_unit": "°C/W",
+          "pred_unit": "°C/W",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        }
+      ]
+    },
+    {
+      "component": "lm741",
+      "type": "OPAMP",
+      "gold_count": 12,
+      "pred_count": 30,
+      "tier1": {
+        "precision": 0.4,
+        "recall": 1.0,
+        "f1": 0.571,
+        "tp": 12,
+        "fp": 18,
+        "fn": 0
+      },
+      "tier2": {
+        "precision": 0.333,
+        "recall": 0.75,
+        "f1": 0.462
+      },
+      "tier3": {
+        "precision": 0.333,
+        "recall": 0.75,
+        "f1": 0.462
+      },
+      "details": [
+        {
+          "gold": "Supply Voltage",
+          "pred": "Supply voltage",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "22"
+          },
+          "pred_values": {
+            "min": "±22",
+            "typ": null,
+            "max": null
+          },
+          "gold_unit": "V",
+          "pred_unit": "V",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Power Dissipation",
+          "pred": "Power dissipation (4)",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "500"
+          },
+          "pred_values": {
+            "min": "500",
+            "typ": null,
+            "max": null
+          },
+          "gold_unit": "mW",
+          "pred_unit": "mW",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Differential Input Voltage",
+          "pred": "Differential input voltage",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "30"
+          },
+          "pred_values": {
+            "min": "±30",
+            "typ": null,
+            "max": null
+          },
+          "gold_unit": "V",
+          "pred_unit": "V",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Input Voltage Range",
+          "pred": "Input voltage (5)",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "15"
+          },
+          "pred_values": {
+            "min": "±15",
+            "typ": null,
+            "max": null
+          },
+          "gold_unit": "V",
+          "pred_unit": "V",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Input Offset Voltage",
+          "pred": "Input offset voltage",
+          "gold_values": {
+            "min": null,
+            "typ": "1.0",
+            "max": "6.0"
+          },
+          "pred_values": {
+            "min": "1",
+            "typ": null,
+            "max": "5"
+          },
+          "gold_unit": "mV",
+          "pred_unit": "mV",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Input Bias Current",
+          "pred": "Input bias current",
+          "gold_values": {
+            "min": null,
+            "typ": "80",
+            "max": "500"
+          },
+          "pred_values": {
+            "min": "80",
+            "typ": null,
+            "max": "500"
+          },
+          "gold_unit": "nA",
+          "pred_unit": "nA",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Input Offset Current",
+          "pred": "Input offset current",
+          "gold_values": {
+            "min": null,
+            "typ": "20",
+            "max": "200"
+          },
+          "pred_values": {
+            "min": "20",
+            "typ": "200",
+            "max": "300"
+          },
+          "gold_unit": "nA",
+          "pred_unit": "nA",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Large Signal Voltage Gain",
+          "pred": "Large signal voltage gain",
+          "gold_values": {
+            "min": "50000",
+            "typ": "200000",
+            "max": null
+          },
+          "pred_values": {
+            "min": "20",
+            "typ": "200",
+            "max": "15"
+          },
+          "gold_unit": "V/V",
+          "pred_unit": "V/mV",
+          "tier1": "HIT",
+          "tier2": "WRONG_VALUE",
+          "tier3": "WRONG_VALUE"
+        },
+        {
+          "gold": "Output Voltage Swing",
+          "pred": "Output voltage swing",
+          "gold_values": {
+            "min": "-12",
+            "typ": null,
+            "max": "12"
+          },
+          "pred_values": {
+            "min": "±12",
+            "typ": null,
+            "max": "±14"
+          },
+          "gold_unit": "V",
+          "pred_unit": "V",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Common Mode Rejection Ratio",
+          "pred": "Common mode rejection ratio",
+          "gold_values": {
+            "min": "70",
+            "typ": "90",
+            "max": null
+          },
+          "pred_values": {
+            "min": "80",
+            "typ": null,
+            "max": "95"
+          },
+          "gold_unit": "dB",
+          "pred_unit": "dB",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Slew Rate",
+          "pred": "Slew rate",
+          "gold_values": {
+            "min": null,
+            "typ": "0.5",
+            "max": null
+          },
+          "pred_values": {
+            "min": "0.3",
+            "typ": null,
+            "max": "0.7"
+          },
+          "gold_unit": "V/µs",
+          "pred_unit": "V/μs",
+          "tier1": "HIT",
+          "tier2": "WRONG_VALUE",
+          "tier3": "WRONG_VALUE"
+        },
+        {
+          "gold": "Operating Temperature",
+          "pred": "Operating temperature",
+          "gold_values": {
+            "min": "0",
+            "typ": null,
+            "max": "70"
+          },
+          "pred_values": {
+            "min": "-50",
+            "typ": null,
+            "max": "125"
+          },
+          "gold_unit": "°C",
+          "pred_unit": "°C",
+          "tier1": "HIT",
+          "tier2": "WRONG_VALUE",
+          "tier3": "WRONG_VALUE"
+        }
+      ]
+    },
+    {
+      "component": "e-hd",
+      "type": "CAPACITOR",
+      "gold_count": 4,
+      "pred_count": 8,
+      "tier1": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.667,
+        "tp": 4,
+        "fp": 4,
+        "fn": 0
+      },
+      "tier2": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.667
+      },
+      "tier3": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.667
+      },
+      "details": [
+        {
+          "gold": "Category Temperature Range",
+          "pred": "Category Temperature Range",
+          "gold_values": {
+            "min": "-40",
+            "typ": null,
+            "max": "105"
+          },
+          "pred_values": {
+            "min": "-40",
+            "typ": null,
+            "max": "+105"
+          },
+          "gold_unit": "°C",
+          "pred_unit": "˚C",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Rated Voltage Range",
+          "pred": "Rated Voltage Range",
+          "gold_values": {
+            "min": "6.3",
+            "typ": null,
+            "max": "50"
+          },
+          "pred_values": {
+            "min": "6.3",
+            "typ": null,
+            "max": "50"
+          },
+          "gold_unit": "V",
+          "pred_unit": "V",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Rated Capacitance Range",
+          "pred": "Rated Capacitance Range",
+          "gold_values": {
+            "min": "22",
+            "typ": null,
+            "max": "6800"
+          },
+          "pred_values": {
+            "min": "22",
+            "typ": null,
+            "max": "6800"
+          },
+          "gold_unit": "µF",
+          "pred_unit": "µF",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Capacitance Tolerance",
+          "pred": "Capacitance Tolerance",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "20"
+          },
+          "pred_values": {
+            "min": "±20",
+            "typ": "120",
+            "max": "20"
+          },
+          "gold_unit": "%",
+          "pred_unit": "%",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        }
+      ]
+    },
+    {
+      "component": "GP-1671375",
+      "type": "RESISTOR",
+      "gold_count": 2,
+      "pred_count": 4,
+      "tier1": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.667,
+        "tp": 2,
+        "fp": 2,
+        "fn": 0
+      },
+      "tier2": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.667
+      },
+      "tier3": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.667
+      },
+      "details": [
+        {
+          "gold": "Maximum Working Voltage",
+          "pred": "Maximum Working Voltage",
+          "gold_values": {
+            "min": "200",
+            "typ": null,
+            "max": "350"
+          },
+          "pred_values": {
+            "min": "200.0",
+            "typ": null,
+            "max": "350.0"
+          },
+          "gold_unit": "V",
+          "pred_unit": null,
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Resistance Temperature Coefficient",
+          "pred": "Resistance Temperature Coefficient",
+          "gold_values": {
+            "min": "25",
+            "typ": null,
+            "max": "100"
+          },
+          "pred_values": {
+            "min": "25.0",
+            "typ": null,
+            "max": "100.0"
+          },
+          "gold_unit": "ppm/°C",
+          "pred_unit": "±ppm/°C",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        }
+      ]
+    },
+    {
+      "component": "tps7a02",
+      "type": "VOLTAGE_REGULATOR",
+      "gold_count": 8,
+      "pred_count": 43,
+      "tier1": {
+        "precision": 0.186,
+        "recall": 1.0,
+        "f1": 0.314,
+        "tp": 8,
+        "fp": 35,
+        "fn": 0
+      },
+      "tier2": {
+        "precision": 0.125,
+        "recall": 0.625,
+        "f1": 0.208
+      },
+      "tier3": {
+        "precision": 0.125,
+        "recall": 0.625,
+        "f1": 0.208
+      },
+      "details": [
+        {
+          "gold": "Input Voltage",
+          "pred": "VIN In",
+          "gold_values": {
+            "min": "1.4",
+            "typ": null,
+            "max": "6.5"
+          },
+          "pred_values": {
+            "min": "1.5",
+            "typ": null,
+            "max": "6.0"
+          },
+          "gold_unit": "V",
+          "pred_unit": "V",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Output Voltage",
+          "pred": "VOUT O",
+          "gold_values": {
+            "min": "0.8",
+            "typ": null,
+            "max": "5.0"
+          },
+          "pred_values": {
+            "min": "0.8",
+            "typ": null,
+            "max": "5.0"
+          },
+          "gold_unit": "V",
+          "pred_unit": "V",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Output Current",
+          "pred": "IOUT O",
+          "gold_values": {
+            "min": null,
+            "typ": null,
+            "max": "300"
+          },
+          "pred_values": {
+            "min": "0",
+            "typ": null,
+            "max": "200"
+          },
+          "gold_unit": "mA",
+          "pred_unit": "mA",
+          "tier1": "HIT",
+          "tier2": "WRONG_VALUE",
+          "tier3": "WRONG_VALUE"
+        },
+        {
+          "gold": "Quiescent Current",
+          "pred": "I GND Ground current",
+          "gold_values": {
+            "min": null,
+            "typ": "350",
+            "max": "550"
+          },
+          "pred_values": {
+            "min": "25",
+            "typ": null,
+            "max": "46"
+          },
+          "gold_unit": "nA",
+          "pred_unit": "nA",
+          "tier1": "HIT",
+          "tier2": "WRONG_VALUE",
+          "tier3": "WRONG_VALUE"
+        },
+        {
+          "gold": "Dropout Voltage",
+          "pred": "V DO Dropout voltage(4)",
+          "gold_values": {
+            "min": null,
+            "typ": "200",
+            "max": "350"
+          },
+          "pred_values": {
+            "min": "1050",
+            "typ": null,
+            "max": null
+          },
+          "gold_unit": "mV",
+          "pred_unit": "mV",
+          "tier1": "HIT",
+          "tier2": "WRONG_VALUE",
+          "tier3": "WRONG_VALUE"
+        },
+        {
+          "gold": "Output Voltage Accuracy",
+          "pred": "Nominal accuracy",
+          "gold_values": {
+            "min": "-1",
+            "typ": null,
+            "max": "1"
+          },
+          "pred_values": {
+            "min": "-1",
+            "typ": null,
+            "max": "1"
+          },
+          "gold_unit": "%",
+          "pred_unit": "%",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "Operating Temperature",
+          "pred": "Temperature",
+          "gold_values": {
+            "min": "-40",
+            "typ": null,
+            "max": "125"
+          },
+          "pred_values": {
+            "min": "-40",
+            "typ": null,
+            "max": "150"
+          },
+          "gold_unit": "°C",
+          "pred_unit": "°C",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        },
+        {
+          "gold": "PSRR",
+          "pred": "PSRR Power-supply rejection ratio",
+          "gold_values": {
+            "min": null,
+            "typ": "50",
+            "max": null
+          },
+          "pred_values": {
+            "min": "55",
+            "typ": null,
+            "max": null
+          },
+          "gold_unit": "dB",
+          "pred_unit": "dB",
+          "tier1": "HIT",
+          "tier2": "HIT",
+          "tier3": "HIT"
+        }
+      ]
+    }
+  ]
+}
