@@ -8,7 +8,13 @@
 
 This project addresses a core challenge in the electronics industry: extracting structured, machine-readable specifications from unstructured PDF datasheets at scale — without manual annotation.
 
-The approach is fully data-centric: a **Synthetic Data Factory** generates realistic training datasheets with perfect ground-truth labels. A fine-tuned **DeBERTa** model then performs joint Named Entity Recognition and Relation Extraction. At inference time, a rule-based PDF preprocessing stage feeds into the trained model, producing structured JSON output.
+### The Challenge
+
+Electronic component datasheets store their key specifications inside multi-column tables with a rigid relational structure: a parameter name (e.g. *Gate Threshold Voltage*) maps to a minimum value, a typical value, a maximum value, a unit, and one or more test conditions — all spread across separate columns in the same row. Traditional OCR and text extraction tools read documents serially (left-to-right, top-to-bottom), which collapses this spatial structure: column values merge into an undifferentiated token stream, units detach from their parameters, and multi-row condition cells align with the wrong values. The result is raw text that contains all the numbers but none of the relationships — making downstream parsing unreliable without a model that understands table context explicitly.
+
+### Approach
+
+The pipeline is fully data-centric: a **Synthetic Data Factory** generates realistic training datasheets with perfect ground-truth labels. A fine-tuned **DeBERTa** model then performs joint Named Entity Recognition and Relation Extraction. At inference time, a rule-based PDF preprocessing stage feeds into the trained model, producing structured JSON output.
 
 <img width="1408" height="768" alt="pipeline_overview" src="https://github.com/user-attachments/assets/a7a0e36b-7fa4-466e-b27e-53dc66088721" />
 
@@ -88,7 +94,7 @@ Relation negative sampling is fixed at a 1:1 positive-to-negative ratio to preve
 | **Head LR** | 1e-4 | **Weight Decay** | 0.01 |
 | **Gradient Clipping** | 1.0 | **Mixed Precision** | FP16 |
 
-**Results (synthetic held-out set, ~4,550 samples — evaluated on data from the same generator):**
+**Synthetic sanity check (~4,550 held-out samples from the same generator):**
 
 | Entity | F1-Score |
 |---|---|
@@ -99,7 +105,7 @@ Relation negative sampling is fixed at a 1:1 positive-to-negative ratio to preve
 | MIN / MAX | > 0.990 |
 | **Overall NER F1** | **0.982** |
 
-> These scores reflect in-distribution performance. Real-world PDF extraction introduces layout noise not present in synthetic data — see the Discussion section below.
+> **Note:** Near-perfect scores here are expected — the model is tested on clean, deterministically generated data from the same distribution it was trained on. This is a capacity check, not a performance claim: it confirms the model can learn the task before being evaluated on real-world data. The meaningful number is the real-world benchmark below (T2-F1 = 0.587).
 
 ---
 
